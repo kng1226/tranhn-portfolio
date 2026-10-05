@@ -28,7 +28,7 @@ export const TopLeftName: React.FC<TopLeftNameProps> = ({ themeMode = 'dark' }) 
 
   return (
     <header
-      className={`fixed top-4 left-4 sm:top-6 sm:left-6 xl:left-8 z-50 pointer-events-auto transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+      className={`hidden sm:block fixed top-4 left-4 sm:top-6 sm:left-6 xl:left-8 z-50 pointer-events-auto transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${
         loaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'
       }`}
     >

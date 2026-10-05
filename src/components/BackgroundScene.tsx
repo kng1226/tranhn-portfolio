@@ -29,6 +29,8 @@ const SECTION_IDS = [
 ] as const;
 
 const FRAMES_PER_SECTION = 300;
+const MAX_DEVICE_PIXEL_RATIO = 1.25;
+const MAX_CACHED_FRAMES = 12;
 
 export const BackgroundScene: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -55,14 +57,18 @@ export const BackgroundScene: React.FC = () => {
     // ── Canvas size ────────────────────────────────────────────────────────────
 
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = Math.min(window.devicePixelRatio || 1, MAX_DEVICE_PIXEL_RATIO);
+      canvas.width = Math.round(window.innerWidth * dpr);
+      canvas.height = Math.round(window.innerHeight * dpr);
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       recomputeBoundaries();
       renderCurrent();
+      if (!raf) raf = requestAnimationFrame(tick);
     };
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    window.addEventListener('resize', resize, { passive: true });
 
     // ── Section boundaries (absolute document positions) ──────────────────────
 
@@ -78,13 +84,26 @@ export const BackgroundScene: React.FC = () => {
     };
 
     // Compute once after first paint; sections need to be in DOM
-    const initTimer = setTimeout(() => recomputeBoundaries(), 300);
+    const sectionObserver = new ResizeObserver(() => {
+      recomputeBoundaries();
+      if (!raf) raf = requestAnimationFrame(tick);
+    });
+    SECTION_IDS.forEach(id => {
+      const section = document.getElementById(id);
+      if (section) sectionObserver.observe(section);
+    });
+    const initTimer = setTimeout(() => {
+      recomputeBoundaries();
+      if (!raf) raf = requestAnimationFrame(tick);
+    }, 300);
 
     // ── Image cache: cache[folder][frame] ──────────────────────────────────────
 
-    type Cache = Record<number, Record<number, HTMLImageElement>>;
+    type Cache = Record<number, Map<number, HTMLImageElement>>;
     const cache: Cache = {};
-    for (let f = 1; f <= 5; f++) cache[f] = {};
+    for (let f = 1; f <= 5; f++) cache[f] = new Map();
+    const pending = new Map<string, HTMLImageElement>();
+    const failed = new Set<string>();
 
     const getPath = (folder: number, frame: number) =>
       `/${folder}/ezgif-frame-${frame.toString().padStart(3, '0')}.jpg`;
@@ -93,10 +112,13 @@ export const BackgroundScene: React.FC = () => {
 
     let currentFolder = 1;
     let currentFrame = 1;
+    let requestedFolder = 1;
+    let requestedFrame = 1;
+    let lastDrawn = '';
 
     const drawImage = (img: HTMLImageElement) => {
-      const cw = canvas.width;
-      const ch = canvas.height;
+      const cw = window.innerWidth;
+      const ch = window.innerHeight;
       const cr = cw / ch;
       const ir = img.naturalWidth / img.naturalHeight;
       let w: number, h: number, x: number, y: number;
@@ -107,25 +129,39 @@ export const BackgroundScene: React.FC = () => {
       }
       ctx.clearRect(0, 0, cw, ch);
       ctx.drawImage(img, x, y, w, h);
+      lastDrawn = `${currentFolder}:${currentFrame}`;
     };
 
     const renderFrame = (folder: number, frame: number) => {
-      const img = cache[folder]?.[frame];
+      requestedFolder = folder;
+      requestedFrame = frame;
+      currentFolder = folder;
+      currentFrame = frame;
+      const key = `${folder}:${frame}`;
+      const img = cache[folder]?.get(frame);
       if (img?.complete && img.naturalWidth > 0) {
         currentFolder = folder;
         currentFrame = frame;
-        drawImage(img);
-      } else if (!cache[folder]?.[frame]) {
+        if (lastDrawn !== key) drawImage(img);
+      } else if (!img && !pending.has(key) && !failed.has(key)) {
         const newImg = new Image();
-        newImg.src = getPath(folder, frame);
-        if (!cache[folder]) cache[folder] = {};
-        cache[folder][frame] = newImg;
+        newImg.decoding = 'async';
+        pending.set(key, newImg);
         newImg.onload = () => {
+          pending.delete(key);
+          cache[folder].set(frame, newImg);
+          const nearby = [...cache[folder].entries()].sort((a, b) => Math.abs(a[0] - currentFrame) - Math.abs(b[0] - currentFrame));
+          while (nearby.length > MAX_CACHED_FRAMES) {
+            const [oldFrame] = nearby.pop()!;
+            if (oldFrame !== currentFrame && oldFrame !== requestedFrame) cache[folder].delete(oldFrame);
+          }
           // Only paint if this is still the active frame
           if (currentFolder === folder && currentFrame === frame) {
             drawImage(newImg);
           }
         };
+        newImg.onerror = () => { pending.delete(key); failed.add(key); };
+        newImg.src = getPath(folder, frame);
       }
     };
 
@@ -133,62 +169,50 @@ export const BackgroundScene: React.FC = () => {
 
     // ── Smart preloader: current section first, then adjacent, then rest ────────
 
-    let preloadAborted = false;
-
-    const preloadFolder = async (folder: number, step = 1) => {
-      for (let frame = 1; frame <= FRAMES_PER_SECTION; frame += step) {
-        if (preloadAborted) return;
-        if (!cache[folder]?.[frame]) {
+    const preloadNearby = (folder: number, frame: number) => {
+      for (const [key, img] of pending) {
+        const [pendingFolder, pendingFrame] = key.split(':').map(Number);
+        if (pendingFolder !== folder || Math.abs(pendingFrame - frame) > 8) {
+          img.onload = null;
+          img.onerror = null;
+          img.removeAttribute('src');
+          pending.delete(key);
+        }
+      }
+      for (let offset = 1; offset <= 2; offset++) {
+        for (const candidate of [frame - offset, frame + offset]) {
+          if (candidate < 1 || candidate > FRAMES_PER_SECTION) continue;
+          const key = `${folder}:${candidate}`;
+          if (cache[folder].has(candidate) || pending.has(key) || failed.has(key)) continue;
           const img = new Image();
-          img.src = getPath(folder, frame);
-          if (!cache[folder]) cache[folder] = {};
-          cache[folder][frame] = img;
-        }
-        // Yield to the browser every 10 images to keep the UI responsive
-        if (frame % 10 === 0) {
-          await new Promise<void>(r => setTimeout(r, 0));
-        }
-      }
-    };
-
-    const preloadAll = async () => {
-      // 1. Section 1 (hero) fully — user lands here
-      await preloadFolder(1, 1);
-      // 2. Section 2 fully — most likely next stop
-      await preloadFolder(2, 1);
-      // 3. Remaining sections at half-resolution first (every other frame)
-      for (let folder = 3; folder <= 5; folder++) {
-        await preloadFolder(folder, 2);
-      }
-      // 4. Fill in missing odd frames for sections 3-5
-      for (let folder = 3; folder <= 5; folder++) {
-        for (let frame = 2; frame <= FRAMES_PER_SECTION; frame += 2) {
-          if (preloadAborted) return;
-          if (!cache[folder]?.[frame]) {
-            const img = new Image();
-            img.src = getPath(folder, frame);
-            cache[folder][frame] = img;
-          }
-          if (frame % 20 === 0) {
-            await new Promise<void>(r => setTimeout(r, 0));
-          }
+          img.decoding = 'async';
+          pending.set(key, img);
+          img.onload = () => {
+            pending.delete(key);
+            cache[folder].set(candidate, img);
+            const loaded = [...cache[folder].keys()];
+            while (loaded.length > MAX_CACHED_FRAMES) {
+              const old = loaded.shift()!;
+              if (old !== currentFrame && old !== requestedFrame) cache[folder].delete(old);
+            }
+          };
+          img.onerror = () => { pending.delete(key); failed.add(key); };
+          img.src = getPath(folder, candidate);
         }
       }
     };
 
     // Boot: show frame 1/1 immediately then begin background preloading
-    const boot = new Image();
-    boot.src = getPath(1, 1);
-    boot.onload = () => {
-      cache[1][1] = boot;
-      drawImage(boot);
-      preloadAll();
-    };
+    renderFrame(1, 1);
 
     // ── Scroll mapping ─────────────────────────────────────────────────────────
 
     const frameForScroll = (scrollY: number): { folder: number; frame: number } => {
       if (!boundaries.length) return { folder: 1, frame: 1 };
+      if (window.innerWidth < 768) {
+        const index = boundaries.findIndex(({ top, height }, i) => scrollY < top + height || i === boundaries.length - 1);
+        return { folder: Math.max(1, index + 1), frame: 1 };
+      }
 
       for (let i = 0; i < boundaries.length; i++) {
         const { top, height } = boundaries[i];
@@ -216,30 +240,40 @@ export const BackgroundScene: React.FC = () => {
 
     let lastRenderedFolder = 0;
     let lastRenderedFrame = 0;
-    let raf: number;
+    let raf = 0;
+    let lastScrollY = window.scrollY;
 
     const tick = () => {
-      const scrollY = window.scrollY;
-      const { folder, frame } = frameForScroll(scrollY);
+      raf = 0;
+      const { folder, frame } = frameForScroll(lastScrollY);
 
       // Only redraw when the frame actually changes — avoids redundant canvas work
       if (folder !== lastRenderedFolder || frame !== lastRenderedFrame) {
         renderFrame(folder, frame);
+        preloadNearby(folder, frame);
         lastRenderedFolder = folder;
         lastRenderedFrame = frame;
       }
-
-      raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick);
+    window.addEventListener('resize', resize, { passive: true });
+    resize();
+    const handleScroll = () => {
+      lastScrollY = window.scrollY;
+      if (!raf) raf = requestAnimationFrame(tick);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    if (!raf) raf = requestAnimationFrame(tick);
 
     // ── Cleanup ────────────────────────────────────────────────────────────────
 
     return () => {
-      preloadAborted = true;
       clearTimeout(initTimer);
+      sectionObserver.disconnect();
       window.removeEventListener('resize', resize);
-      cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', handleScroll);
+      if (raf) cancelAnimationFrame(raf);
+      pending.forEach(img => img.removeAttribute('src'));
+      pending.clear();
     };
   }, []);
 
@@ -254,7 +288,7 @@ export const BackgroundScene: React.FC = () => {
       */}
       <canvas
         ref={canvasRef}
-        className="w-full h-full block scale-[1.06] origin-center translate-x-[1.5%] translate-y-[1.5%]"
+        className="absolute inset-0 w-full h-full block scale-[1.06] origin-center translate-x-[1.5%] translate-y-[1.5%]"
       />
     </div>
   );

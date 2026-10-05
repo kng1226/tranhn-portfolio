@@ -56,7 +56,9 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
       const rawProgress = currentScroll / totalScrollableDistance;
       const clamped = Math.min(1, Math.max(0, rawProgress));
 
-      setScrollProgress(clamped);
+      setScrollProgress((previous) =>
+        Math.abs(clamped - previous) >= 0.008 || clamped === 0 || clamped === 1 ? clamped : previous,
+      );
 
       // Adaptive theming & navbar opacity based on progression
       // 0.0 - 0.38: Meadow background -> light theme

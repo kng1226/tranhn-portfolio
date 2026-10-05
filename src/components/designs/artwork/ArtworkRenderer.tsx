@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 
 interface ArtworkRendererProps {
   id: string;
@@ -17,8 +17,6 @@ export const ArtworkRenderer: React.FC<ArtworkRendererProps> = ({
   isThumbnail = false,
 }) => {
   const normId = id.toLowerCase().replace(/[\s_.-]+/g, '-');
-  const [isPopup, setIsPopup] = useState(false);
-
   let src = '';
   let isVideo = false;
 
@@ -33,10 +31,7 @@ export const ArtworkRenderer: React.FC<ArtworkRendererProps> = ({
   else if (normId === 'artboard-2') src = '/assets/designs/Artboard 2.png';
   else if (normId === 'cover') src = '/assets/designs/COVER.png';
   else if (normId.includes('final-countdown-ws')) src = '/assets/designs/Final Countdown WS.png';
-  else if (normId.includes('final-countdown')) {
-    src = '/assets/designs/COUNTDOWN.mp4';
-    isVideo = true;
-  }
+  else if (normId.includes('final-countdown')) src = '/assets/designs/final countdown.png';
   else if (normId === 'final-10') src = '/assets/designs/final 10.png';
   else if (normId.includes('mo-don') || normId.includes('chainx')) src = '/assets/designs/final final mở đơn 2.png';
   else if (normId === 'final-final') src = '/assets/designs/final final.png';
@@ -66,10 +61,11 @@ export const ArtworkRenderer: React.FC<ArtworkRendererProps> = ({
         <video 
           src={src} 
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 pointer-events-none" 
-          autoPlay 
+          autoPlay={false}
           loop 
           muted 
           playsInline
+          preload={isThumbnail ? 'none' : 'metadata'}
         />
       ) : (
         <img 
@@ -77,6 +73,7 @@ export const ArtworkRenderer: React.FC<ArtworkRendererProps> = ({
           alt={id} 
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 pointer-events-none"
           loading="lazy"
+          decoding="async"
         />
       )}
     </div>

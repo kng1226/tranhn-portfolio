@@ -12,6 +12,7 @@ interface VideoPlayerSimProps {
 
 export const VideoPlayerSim: React.FC<VideoPlayerSimProps> = ({ videoId, autoPlay = true }) => {
   const [isPlaying, setIsPlaying] = useState(autoPlay);
+  const [videoUnavailable, setVideoUnavailable] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [progress, setProgress] = useState(0);
 
@@ -50,30 +51,43 @@ export const VideoPlayerSim: React.FC<VideoPlayerSimProps> = ({ videoId, autoPla
   return (
     <div className="relative w-full aspect-video rounded-2xl bg-black overflow-hidden flex flex-col justify-between shadow-2xl select-none font-sans group">
       
-      <video
+      {videoUnavailable ? (
+        <div className="relative h-full w-full">
+          <img
+            src={videoId === 'video-countdown' ? '/assets/designs/final countdown.png' : '/assets/designs/Quán quân.png'}
+            alt={`${videoId === 'video-countdown' ? 'Countdown' : 'Quán quân'} video still`}
+            className="h-full w-full object-contain"
+          />
+          <span className="absolute bottom-3 left-3 rounded-full bg-black/65 px-3 py-1 text-[10px] text-white">
+            Video preview unavailable
+          </span>
+        </div>
+      ) : <video
         ref={videoRef}
         src={src}
         className="w-full h-full object-contain cursor-pointer"
         autoPlay={autoPlay}
+        preload="metadata"
+        onError={() => { setIsPlaying(false); setVideoUnavailable(true); }}
         loop
         playsInline
         onClick={handleVideoClick}
         onTimeUpdate={handleTimeUpdate}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
-      />
+      />}
 
       {/* Top Header Bar */}
-      <div className="absolute top-0 left-0 right-0 z-10 p-3 sm:p-4 flex items-center justify-between text-[9px] text-white/70 font-mono bg-gradient-to-b from-black/70 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      {!videoUnavailable && <div className="absolute top-0 left-0 right-0 z-10 p-3 sm:p-4 flex items-center justify-between text-[9px] text-white/70 font-mono bg-gradient-to-b from-black/70 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
           <span>LIVE PREVIEW REEL</span>
         </div>
         <span>{formatTime(videoRef.current?.currentTime || 0)} / {formatTime(videoRef.current?.duration || 0)}</span>
-      </div>
+      </div>}
 
       {/* Bottom Control Bar */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 p-3 sm:p-4 flex items-center justify-between text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      {!videoUnavailable && <div className="absolute bottom-0 left-0 right-0 z-10 p-3 sm:p-4 flex items-center justify-between text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <button
           onClick={() => setIsPlaying(!isPlaying)}
           type="button"
@@ -91,9 +105,9 @@ export const VideoPlayerSim: React.FC<VideoPlayerSimProps> = ({ videoId, autoPla
         </div>
 
         <span className="font-mono text-[9px] text-white/70">4K PRORES 24FPS</span>
-      </div>
+      </div>}
 
-      {!isPlaying && (
+      {!videoUnavailable && !isPlaying && (
         <div 
           className="absolute inset-0 flex items-center justify-center pointer-events-none"
         >

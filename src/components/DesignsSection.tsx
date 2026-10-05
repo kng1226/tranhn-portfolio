@@ -74,13 +74,13 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
       id="designs-section"
       ref={sectionRef}
       aria-label="Section 04 — Designs"
-      className={`relative w-full ${isMobile ? 'min-h-screen py-16' : 'h-screen'} z-20 select-none overflow-hidden`}
+      className={`relative w-full ${isMobile ? 'py-16' : 'min-h-screen py-24'} z-20 select-none overflow-hidden`}
     >
       {/* ============================================================ */}
       {/* DESKTOP VIEWPORT */}
       {/* ============================================================ */}
       {!isMobile ? (
-        <div className="relative h-full w-full overflow-hidden flex flex-col justify-between">
+        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between">
           {/* Top Header Layer: Section 04 Start & Main Intro */}
           <div className="absolute top-[8vh] left-[6vw] lg:left-[7vw] z-30 pointer-events-none transition-opacity duration-500">
             {/* Chapter Marker */}
@@ -310,8 +310,9 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
                 { id: 'bai-4', title: 'A Little Bite', type: 'FILM STRIP', full: false },
                 { id: 'draft-5', title: 'Notice', type: 'TEASER ENVELOPE', full: false },
               ].map((item) => (
-                <div
+                <button
                   key={item.id}
+                  type="button"
                   onClick={() =>
                     handleSelectItem({
                       id: item.id,
@@ -321,7 +322,7 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
                     })
                   }
                   className={`${item.full ? 'col-span-2' : 'col-span-1'
-                    } rounded-2xl bg-white p-3 border border-black/8 shadow-sm flex flex-col justify-between min-h-[170px] cursor-pointer`}
+                    } rounded-2xl bg-white p-3 border border-black/8 shadow-sm flex flex-col justify-between min-h-[170px] cursor-pointer text-left`}
                 >
                   <div className="w-full h-28 rounded-xl overflow-hidden mb-2 shadow-2xs border border-black/5">
                     <ArtworkRenderer id={item.id} isThumbnail className="w-full h-full" />
@@ -334,7 +335,7 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
                       VIEW ↗
                     </span>
                   </div>
-                </div>
+                </button>
               ))}
             </div>
           </div>
@@ -363,13 +364,12 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
                 >
                   {/* Actual Video instead of mock */}
                   <div className="absolute inset-0 bg-black flex items-center justify-center">
-                    <video
-                      src={vid.id === 'video-countdown' ? '/assets/designs/COUNTDOWN.mp4' : '/assets/designs/QUÁN QUÂN - BA CỤC ĐÁ.mp4'}
+                    <img
+                      src={vid.id === 'video-countdown' ? '/assets/designs/final countdown.png' : '/assets/designs/Quán quân.png'}
+                      alt={`${vid.title} video preview`}
                       className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
 

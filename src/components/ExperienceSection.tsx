@@ -32,7 +32,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onModalCha
     <section
       id="experience-section"
       aria-label="Section 02 — Experience & Leadership"
-      className="relative min-h-screen py-16 sm:py-20 lg:py-0 lg:h-screen w-full flex flex-col justify-between px-[6vw] lg:px-[7vw] lg:pt-[13vh] lg:pb-[7vh] z-20 select-none overflow-x-hidden"
+      className="relative min-h-screen py-16 sm:py-20 lg:py-24 w-full flex flex-col justify-center gap-10 px-[6vw] lg:px-[7vw] z-20 select-none overflow-x-hidden"
     >
       {/* ============================================================ */}
       {/* 1. SECTION START: EDITORIAL CHAPTER MARKER                   */}

@@ -22,6 +22,7 @@ export default function App() {
   const [themeMode, setThemeMode] = useState<'dark' | 'light'>('dark');
   const [navOpacity, setNavOpacity] = useState(1);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const scrollProgressRef = React.useRef(0);
   const [isPastHero, setIsPastHero] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isExperienceModalOpen, setIsExperienceModalOpen] = useState(false);
@@ -39,7 +40,10 @@ export default function App() {
 
       // scrollProgress: 0 at top, 1 when scrolled beyond 70% of hero height
       const progress = Math.min(1, Math.max(0, scrollY / (heroHeight * 0.7)));
-      setScrollProgress(progress);
+      if (Math.abs(progress - scrollProgressRef.current) >= 0.02 || progress === 0 || progress === 1) {
+        scrollProgressRef.current = progress;
+        setScrollProgress(progress);
+      }
 
       // Past hero threshold (flips scroll arrow between ↓ and ↑)
       const past = scrollY > heroHeight * 0.45;

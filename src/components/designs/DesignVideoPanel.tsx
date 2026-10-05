@@ -82,13 +82,12 @@ export const DesignVideoPanel: React.FC<DesignVideoPanelProps> = ({ onSelectItem
         >
           {/* Actual Video instead of Visual Simulator */}
           <div className="absolute inset-0 bg-black flex items-center justify-center">
-            <video 
-              src="/assets/designs/COUNTDOWN.mp4" 
+            <img
+              src="/assets/designs/final countdown.png"
+              alt="Countdown film preview"
               className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" 
-              autoPlay 
-              loop 
-              muted 
-              playsInline
+              loading="lazy"
+              decoding="async"
             />
 
             {/* Play Button Overlay */}
@@ -126,13 +125,12 @@ export const DesignVideoPanel: React.FC<DesignVideoPanelProps> = ({ onSelectItem
         >
           {/* Actual Video instead of Visual Simulator */}
           <div className="absolute inset-0 bg-black flex items-center justify-center">
-            <video 
-              src="/assets/designs/QUÁN QUÂN - BA CỤC ĐÁ.mp4" 
+            <img
+              src="/assets/designs/Quán quân.png"
+              alt="Quán quân film preview"
               className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" 
-              autoPlay 
-              loop 
-              muted 
-              playsInline
+              loading="lazy"
+              decoding="async"
             />
 
             {/* Play Button Overlay */}

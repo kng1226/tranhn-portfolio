@@ -90,7 +90,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onModalChange 
     <section
       id="projects-section"
       aria-label="Section 03 — Projects"
-      className="relative min-h-screen py-16 sm:py-20 lg:py-0 lg:h-screen w-full flex flex-col justify-between px-[6vw] lg:px-[7vw] lg:pt-[12vh] lg:pb-[6vh] z-20 select-none overflow-x-hidden"
+      className="relative min-h-screen py-16 sm:py-20 lg:py-24 w-full flex flex-col justify-center gap-10 px-[6vw] lg:px-[7vw] z-20 select-none overflow-x-hidden"
     >
       {/* ============================================================ */}
       {/* 1. SECTION START: EDITORIAL CHAPTER MARKER                   */}
