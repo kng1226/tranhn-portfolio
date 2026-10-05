@@ -10,6 +10,7 @@ import { DesignGraphicPanel } from './designs/DesignGraphicPanel';
 import { DesignVideoPanel } from './designs/DesignVideoPanel';
 import { DesignModal, DesignItemData } from './designs/DesignModal';
 import { ArtworkRenderer } from './designs/artwork/ArtworkRenderer';
+import { LazyVideoPreview } from './designs/LazyVideoPreview';
 
 interface DesignsSectionProps {
   onModalChange?: (isOpen: boolean) => void;
@@ -350,8 +351,9 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
                 { id: 'video-countdown', title: 'COUNTDOWN', type: 'MOTION GRAPHICS & TEASER EDIT' },
                 { id: 'video-quan-quan', title: 'QUÁN QUÂN - BA CỤC ĐÁ', type: 'CHAMPIONSHIP REVEAL FILM' },
               ].map((vid) => (
-                <div
+                <button
                   key={vid.id}
+                  type="button"
                   onClick={() =>
                     handleSelectItem({
                       id: vid.id,
@@ -360,16 +362,15 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
                       typeLabel: vid.type,
                     })
                   }
-                  className="w-full aspect-video rounded-2xl bg-[#09171E] border border-white/20 flex flex-col justify-between text-white shadow-lg relative overflow-hidden cursor-pointer group"
+                  className="w-full aspect-video rounded-2xl bg-[#09171E] border border-white/20 flex flex-col justify-between text-white shadow-lg relative overflow-hidden cursor-pointer group text-left"
                 >
-                  {/* Actual Video instead of mock */}
+                  {/* Load the video only when its card is near the viewport. */}
                   <div className="absolute inset-0 bg-black flex items-center justify-center">
-                    <img
-                      src={vid.id === 'video-countdown' ? '/assets/designs/final countdown.png' : '/assets/designs/Quán quân.png'}
+                    <LazyVideoPreview
+                      src={vid.id === 'video-countdown' ? '/assets/designs/COUNTDOWN.mp4' : '/assets/designs/QUÁN QUÂN - BA CỤC ĐÁ.mp4'}
+                      poster={vid.id === 'video-countdown' ? '/assets/designs/final countdown.png' : '/assets/designs/Quán quân.png'}
                       alt={`${vid.title} video preview`}
                       className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                      loading="lazy"
-                      decoding="async"
                     />
                   </div>
 
@@ -392,7 +393,7 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
                       PLAY FILM →
                     </span>
                   </div>
-                </div>
+                </button>
               ))}
             </div>
           </div>

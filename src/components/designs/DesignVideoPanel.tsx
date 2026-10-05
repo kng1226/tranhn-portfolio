@@ -3,16 +3,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import { DesignItemData } from './DesignModal';
+import { LazyVideoPreview } from './LazyVideoPreview';
 
 interface DesignVideoPanelProps {
   onSelectItem: (item: DesignItemData) => void;
 }
 
 export const DesignVideoPanel: React.FC<DesignVideoPanelProps> = ({ onSelectItem }) => {
-  const [hoveredVideo, setHoveredVideo] = useState<'COUNTDOWN' | 'QUAN_QUAN' | null>(null);
-
   const countdownVideo: DesignItemData = {
     id: 'video-countdown',
     category: 'VIDEO',
@@ -74,20 +73,17 @@ export const DesignVideoPanel: React.FC<DesignVideoPanelProps> = ({ onSelectItem
         {/* MAIN VIDEO: COUNTDOWN (~44-48vw wide, 16:9) */}
         <button
           onClick={() => onSelectItem(countdownVideo)}
-          onMouseEnter={() => setHoveredVideo('COUNTDOWN')}
-          onMouseLeave={() => setHoveredVideo(null)}
           type="button"
           aria-label="Play COUNTDOWN video"
           className="relative w-full sm:w-[60vw] lg:w-[44vw] aspect-video rounded-[28px] border border-white/20 bg-black/60 backdrop-blur-xl overflow-hidden shadow-[0_25px_70px_rgba(0,0,0,0.5)] transition-all duration-500 hover:scale-[1.015] hover:border-white/40 cursor-pointer text-left group focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
         >
-          {/* Actual Video instead of Visual Simulator */}
+          {/* Load the video only when its card is near the viewport. */}
           <div className="absolute inset-0 bg-black flex items-center justify-center">
-            <img
-              src="/assets/designs/final countdown.png"
+            <LazyVideoPreview
+              src="/assets/designs/COUNTDOWN.mp4"
+              poster="/assets/designs/final countdown.png"
               alt="Countdown film preview"
-              className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" 
-              loading="lazy"
-              decoding="async"
+              className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
             />
 
             {/* Play Button Overlay */}
@@ -117,20 +113,17 @@ export const DesignVideoPanel: React.FC<DesignVideoPanelProps> = ({ onSelectItem
         {/* SECONDARY VIDEO: QUÁN QUÂN - BA CỤC ĐÁ (~30-34vw wide, 16:9) */}
         <button
           onClick={() => onSelectItem(quanQuanVideo)}
-          onMouseEnter={() => setHoveredVideo('QUAN_QUAN')}
-          onMouseLeave={() => setHoveredVideo(null)}
           type="button"
           aria-label="Play QUÁN QUÂN - BA CỤC ĐÁ video"
           className="relative w-full sm:w-[50vw] lg:w-[32vw] aspect-video rounded-[24px] border border-white/15 bg-black/50 backdrop-blur-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-500 hover:scale-[1.015] hover:border-white/35 cursor-pointer text-left group focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
         >
-          {/* Actual Video instead of Visual Simulator */}
+          {/* Load the video only when its card is near the viewport. */}
           <div className="absolute inset-0 bg-black flex items-center justify-center">
-            <img
-              src="/assets/designs/Quán quân.png"
+            <LazyVideoPreview
+              src="/assets/designs/QUÁN QUÂN - BA CỤC ĐÁ.mp4"
+              poster="/assets/designs/Quán quân.png"
               alt="Quán quân film preview"
-              className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" 
-              loading="lazy"
-              decoding="async"
+              className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
             />
 
             {/* Play Button Overlay */}
