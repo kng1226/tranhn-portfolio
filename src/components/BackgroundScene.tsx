@@ -78,7 +78,6 @@ export const BackgroundScene: React.FC = () => {
     };
 
     // Compute once after first paint; sections need to be in DOM
-    // We defer slightly so React has finished laying out
     const initTimer = setTimeout(() => recomputeBoundaries(), 300);
 
     // ── Image cache: cache[folder][frame] ──────────────────────────────────────
@@ -132,24 +131,52 @@ export const BackgroundScene: React.FC = () => {
 
     const renderCurrent = () => renderFrame(currentFolder, currentFrame);
 
-    // ── Preload all sections lazily ────────────────────────────────────────────
+    // ── Smart preloader: current section first, then adjacent, then rest ────────
+
+    let preloadAborted = false;
+
+    const preloadFolder = async (folder: number, step = 1) => {
+      for (let frame = 1; frame <= FRAMES_PER_SECTION; frame += step) {
+        if (preloadAborted) return;
+        if (!cache[folder]?.[frame]) {
+          const img = new Image();
+          img.src = getPath(folder, frame);
+          if (!cache[folder]) cache[folder] = {};
+          cache[folder][frame] = img;
+        }
+        // Yield to the browser every 10 images to keep the UI responsive
+        if (frame % 10 === 0) {
+          await new Promise<void>(r => setTimeout(r, 0));
+        }
+      }
+    };
 
     const preloadAll = async () => {
-      for (let folder = 1; folder <= 5; folder++) {
-        for (let frame = 1; frame <= FRAMES_PER_SECTION; frame++) {
+      // 1. Section 1 (hero) fully — user lands here
+      await preloadFolder(1, 1);
+      // 2. Section 2 fully — most likely next stop
+      await preloadFolder(2, 1);
+      // 3. Remaining sections at half-resolution first (every other frame)
+      for (let folder = 3; folder <= 5; folder++) {
+        await preloadFolder(folder, 2);
+      }
+      // 4. Fill in missing odd frames for sections 3-5
+      for (let folder = 3; folder <= 5; folder++) {
+        for (let frame = 2; frame <= FRAMES_PER_SECTION; frame += 2) {
+          if (preloadAborted) return;
           if (!cache[folder]?.[frame]) {
             const img = new Image();
             img.src = getPath(folder, frame);
             cache[folder][frame] = img;
           }
-          if (frame % 30 === 0) {
-            await new Promise<void>(r => setTimeout(r, 5));
+          if (frame % 20 === 0) {
+            await new Promise<void>(r => setTimeout(r, 0));
           }
         }
       }
     };
 
-    // Boot: show frame 1/1 immediately then preload everything
+    // Boot: show frame 1/1 immediately then begin background preloading
     const boot = new Image();
     boot.src = getPath(1, 1);
     boot.onload = () => {
@@ -167,19 +194,15 @@ export const BackgroundScene: React.FC = () => {
         const { top, height } = boundaries[i];
         const bottom = top + height;
 
-        // We're inside this section if scrollY hasn't yet reached the bottom of this section
         if (scrollY < bottom || i === boundaries.length - 1) {
-          // Map progress based on the section's travel through the viewport
-          // Starts when section top hits viewport bottom (scrollY = top - windowHeight)
-          // Ends when section bottom hits viewport top (scrollY = top + height)
           const windowHeight = window.innerHeight;
           const startScroll = Math.max(0, top - windowHeight);
           const endScroll = bottom;
           const scrollable = endScroll - startScroll;
-          
+
           let progress = 0;
           if (scrollable > 0) {
-             progress = Math.max(0, Math.min(1, (scrollY - startScroll) / scrollable));
+            progress = Math.max(0, Math.min(1, (scrollY - startScroll) / scrollable));
           }
           const frame = Math.max(1, Math.min(FRAMES_PER_SECTION, Math.floor(progress * FRAMES_PER_SECTION) + 1));
           return { folder: i + 1, frame };
@@ -189,19 +212,23 @@ export const BackgroundScene: React.FC = () => {
       return { folder: 5, frame: FRAMES_PER_SECTION };
     };
 
-    // ── Eased scroll animation loop ────────────────────────────────────────────
+    // ── Direct RAF loop — reads scrollY directly, no easing delay ─────────────
 
-    let targetScroll = window.scrollY;
-    let easedScroll = window.scrollY;
-    const EASE = 0.08;
+    let lastRenderedFolder = 0;
+    let lastRenderedFrame = 0;
     let raf: number;
 
-    window.addEventListener('scroll', () => { targetScroll = window.scrollY; }, { passive: true });
-
     const tick = () => {
-      easedScroll += (targetScroll - easedScroll) * EASE;
-      const { folder, frame } = frameForScroll(easedScroll);
-      renderFrame(folder, frame);
+      const scrollY = window.scrollY;
+      const { folder, frame } = frameForScroll(scrollY);
+
+      // Only redraw when the frame actually changes — avoids redundant canvas work
+      if (folder !== lastRenderedFolder || frame !== lastRenderedFrame) {
+        renderFrame(folder, frame);
+        lastRenderedFolder = folder;
+        lastRenderedFrame = frame;
+      }
+
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -209,6 +236,7 @@ export const BackgroundScene: React.FC = () => {
     // ── Cleanup ────────────────────────────────────────────────────────────────
 
     return () => {
+      preloadAborted = true;
       clearTimeout(initTimer);
       window.removeEventListener('resize', resize);
       cancelAnimationFrame(raf);
@@ -224,9 +252,9 @@ export const BackgroundScene: React.FC = () => {
         Slightly scale and shift the canvas to push the ezgif watermark 
         at the bottom right completely out of the visible viewport. 
       */}
-      <canvas 
-        ref={canvasRef} 
-        className="w-full h-full block scale-[1.06] origin-center translate-x-[1.5%] translate-y-[1.5%]" 
+      <canvas
+        ref={canvasRef}
+        className="w-full h-full block scale-[1.06] origin-center translate-x-[1.5%] translate-y-[1.5%]"
       />
     </div>
   );
