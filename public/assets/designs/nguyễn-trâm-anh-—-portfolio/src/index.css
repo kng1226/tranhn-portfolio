@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Instrument Serif', 'Cormorant Garamond', Georgia, serif;
+  --font-editorial: 'Cormorant Garamond', 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    overflow-y: overlay;
+  }
+
+  body {
+    background-color: #0b1c24;
+    color: #F3E7D0;
+    font-family: var(--font-sans);
+  }
+
+  /* Overlay scrollbar styling for all elements */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(23, 58, 70, 0.3) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(23, 58, 70, 0.28);
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    transition: background-color 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(23, 58, 70, 0.55);
+  }
+}
+
+/* Custom cinematic grain and subtle light sweep */
+.cinematic-vignette {
+  background: radial-gradient(circle at 65% 35%, rgba(23, 58, 70, 0.25) 0%, rgba(11, 28, 36, 0.6) 70%, rgba(7, 18, 24, 0.92) 100%);
+}
+
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Custom transition curves matching user specs */
+.ease-editorial-curve {
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
