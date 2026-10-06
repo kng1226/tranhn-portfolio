@@ -9,12 +9,14 @@ interface ArtworkRendererProps {
   id: string;
   className?: string;
   isThumbnail?: boolean;
+  fit?: 'cover' | 'contain';
 }
 
 export const ArtworkRenderer: React.FC<ArtworkRendererProps> = ({
   id,
   className = '',
   isThumbnail = false,
+  fit = 'cover',
 }) => {
   const normId = id.toLowerCase().replace(/[\s_.-]+/g, '-');
   let src = '';
@@ -54,13 +56,13 @@ export const ArtworkRenderer: React.FC<ArtworkRendererProps> = ({
   }
 
   return (
-    <div 
-      className={`relative w-full h-full rounded-2xl overflow-hidden flex items-center justify-center bg-[#0b1c24] ${className}`}
+    <div
+      className={`relative flex items-center justify-center rounded-2xl ${fit === 'contain' ? 'w-fit max-w-full max-h-[68vh] bg-white' : 'w-full h-full overflow-hidden bg-[#0b1c24]'} ${className}`}
     >
       {isVideo ? (
         <video 
           src={src} 
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 pointer-events-none" 
+          className={fit === 'contain' ? 'block w-auto h-auto max-w-full max-h-[68vh] object-contain pointer-events-none' : 'w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 pointer-events-none'}
           autoPlay={false}
           loop 
           muted 
@@ -71,7 +73,7 @@ export const ArtworkRenderer: React.FC<ArtworkRendererProps> = ({
         <img 
           src={src} 
           alt={id} 
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 pointer-events-none"
+          className={fit === 'contain' ? 'block w-auto h-auto max-w-full max-h-[68vh] object-contain pointer-events-none' : 'w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 pointer-events-none'}
           loading="lazy"
           decoding="async"
         />

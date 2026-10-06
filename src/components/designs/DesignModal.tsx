@@ -74,7 +74,7 @@ export const DesignModal: React.FC<DesignModalProps> = ({ item, onClose, trigger
       />
 
       {/* Modal Container */}
-      <div className="relative z-[220] w-[min(1100px,94vw)] max-h-[88vh] overflow-y-auto rounded-[28px] sm:rounded-[34px] border border-[#F3E7D0]/30 bg-[#F3E7D0]/95 backdrop-blur-2xl shadow-[0_35px_110px_rgba(14,48,60,0.3)] p-6 sm:p-10 lg:p-12 text-[#173A46] my-auto transition-all duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] animate-in fade-in zoom-in-[0.96]">
+      <div className="relative z-[220] w-[min(1100px,94vw)] max-h-[90vh] overflow-y-auto rounded-[28px] sm:rounded-[34px] border border-white bg-white shadow-[0_35px_110px_rgba(14,48,60,0.3)] p-6 sm:p-10 lg:p-12 text-[#173A46] my-auto transition-all duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] animate-in fade-in zoom-in-[0.96]">
         {/* Upper-Right Corner Exit Button */}
         <button
           ref={exitButtonRef}
@@ -129,8 +129,8 @@ export const DesignModal: React.FC<DesignModalProps> = ({ item, onClose, trigger
           /* General Design Modal (3D, UI/UX, Graphic Design) */
           <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center">
             {/* Visual Canvas Stage displaying the EXACT artwork */}
-            <div className="relative w-full aspect-square sm:aspect-[4/3] rounded-2xl bg-white/40 border border-[#173A46]/10 overflow-hidden shadow-inner flex items-center justify-center p-3 sm:p-5">
-              <ArtworkRenderer id={item.id} className="w-full h-full shadow-lg" />
+            <div className="relative mx-auto w-fit max-w-full max-h-[68vh] rounded-2xl bg-white border border-[#173A46]/10 shadow-inner flex items-center justify-center p-2 sm:p-3">
+              <ArtworkRenderer id={item.id} fit="contain" className="max-w-full max-h-[68vh] shadow-lg" />
             </div>
 
             {/* Design Story Column */}

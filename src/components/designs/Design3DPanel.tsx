@@ -63,15 +63,15 @@ export const Design3DPanel: React.FC<Design3DPanelProps> = ({ onSelectItem, redu
   };
 
   const supportingItemB: DesignItemData = {
-    id: 'draft-5',
+    id: 'chainx',
     category: '3D',
-    title: 'draft 5',
-    typeLabel: '3D TEASER ENVELOPE',
-    role: '3D VISUAL DESIGNER',
-    year: '2025',
-    tools: 'BLENDER · LIGHTING & VOLUMETRICS',
+    title: 'ChainX',
+    typeLabel: '3D COMPOSITED LAUNCH VISUAL',
+    role: 'KEY VISUAL DESIGNER',
+    year: '2026',
+    tools: 'PHOTOSHOP · 3D COMPOSITING',
     context:
-      'High-contrast 3D teaser envelope with an emissive cyan holographic card emerging from a deep dark void.',
+      'Cyberpunk tech launch panorama featuring metallic futuristic typography, glowing cyber cubes, and strategic brand sponsor hierarchy.',
   };
 
   return (
@@ -180,11 +180,11 @@ export const Design3DPanel: React.FC<Design3DPanelProps> = ({ onSelectItem, redu
           </div>
         </button>
 
-        {/* SUPPORTING 3D VIEW B (Lower-left floating accent): draft 5 */}
+        {/* SUPPORTING 3D VIEW B (Lower-left floating accent): ChainX */}
         <button
           onClick={() => onSelectItem(supportingItemB)}
           type="button"
-          aria-label="View draft 5 3D Teaser Envelope"
+          aria-label="View ChainX 3D composited launch visual"
           style={{
             transform: reducedMotion
               ? 'none'
@@ -193,11 +193,11 @@ export const Design3DPanel: React.FC<Design3DPanelProps> = ({ onSelectItem, redu
           className="hidden sm:flex absolute -bottom-2 left-2 lg:left-4 z-20 w-36 lg:w-44 aspect-square rounded-[24px] bg-white/40 backdrop-blur-md border border-[#F3E7D0]/50 p-2.5 shadow-[0_16px_40px_rgba(23,58,70,0.12)] hover:scale-105 hover:shadow-xl transition-all duration-500 cursor-pointer flex-col justify-between text-left group"
         >
           <div className="w-full h-full rounded-2xl overflow-hidden shadow-xs">
-            <ArtworkRenderer id="draft-5" isThumbnail className="w-full h-full" />
+            <ArtworkRenderer id="chainx" isThumbnail className="w-full h-full" />
           </div>
           <div className="mt-1 flex items-center justify-between px-1">
             <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#173A46]/70 truncate font-medium">
-              draft 5
+              ChainX
             </span>
             <span className="text-[9px] text-[#173A46]/50 group-hover:translate-x-0.5 transition-transform">↗</span>
           </div>
