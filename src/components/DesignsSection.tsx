@@ -86,14 +86,14 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
           <div className="absolute top-[8vh] left-[6vw] lg:left-[7vw] z-30 pointer-events-none transition-opacity duration-500">
             {/* Chapter Marker */}
             <div className="flex items-center gap-3">
-              <span className="font-serif italic text-[16px] text-[#244B57] font-medium leading-none">
+              <span className="font-serif italic text-[16px] text-[#f3e7d0] font-medium leading-none">
                 04
               </span>
-              <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#244B57] font-medium font-medium">
+              <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#f3e7d0] font-medium font-medium">
                 DESIGNS
               </span>
               <span className="w-8 h-px bg-[#173A46]/20" />
-              <span className="font-sans text-[10px] uppercase tracking-[0.16em] text-[#244B57] font-medium">
+              <span className="font-sans text-[10px] uppercase tracking-[0.16em] text-[#f3e7d0] font-medium">
                 FORM · INTERFACE · IMAGE · MOTION
               </span>
             </div>

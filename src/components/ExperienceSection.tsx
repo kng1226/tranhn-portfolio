@@ -103,10 +103,10 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onModalCha
         >
           {/* Top Visual Chamber (0-58% of card height, matching project visual ratio) */}
           <div className="relative h-[58%] w-full overflow-hidden rounded-2xl bg-white/25 border border-[#173A46]/8 flex items-center justify-center p-4 shadow-inner">
-            <img 
-              src="/images/fpt-logo.webp" 
-              alt="FPT Telecom" 
-              className="h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105" 
+            <img
+              src="/images/fpt-logo.webp"
+              alt="FPT Telecom"
+              className="h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
             />
           </div>
 
@@ -155,10 +155,10 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onModalCha
         >
           {/* Top Visual Chamber (0-58% of card height, matching project visual ratio) */}
           <div className="relative h-[58%] w-full overflow-hidden rounded-2xl bg-white/25 border border-[#173A46]/8 flex items-center justify-center gap-3 p-4 shadow-inner">
-            <img 
-              src="/images/tec-logo.png" 
-              alt="TEC Logo" 
-              className="h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105" 
+            <img
+              src="/images/tec-logo.png"
+              alt="TEC Logo"
+              className="h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
             />
             <span className="font-serif text-[22px] lg:text-[24px] text-[#173A46] font-medium tracking-tight">
               TEC FTU

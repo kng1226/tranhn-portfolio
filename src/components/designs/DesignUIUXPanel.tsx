@@ -20,122 +20,122 @@ export const DesignUIUXPanel: React.FC<DesignUIUXPanelProps> = ({ onSelectItem }
     positionClass: string;
     sizeClass: string;
   })[] = [
-    {
-      id: 'gresset',
-      category: 'UI/UX',
-      title: 'Gresset',
-      typeLabel: 'SUSTAINABILITY PLATFORM',
-      role: 'PRODUCT DESIGNER · UI/UX',
-      year: '2023',
-      tools: 'FIGMA · DESIGN SYSTEMS',
-      context:
-        'A digital carbon tracking and environmental stewardship interface mapping real-time resource consumption into actionable impact loops.',
-      accentColor: '#43B02A',
-      previewSubtitle: 'Eco Thrifting & Recycling',
-      positionClass: 'left-[1%] top-[12%]',
-      sizeClass: 'w-[19vw] h-[36vh] min-w-[220px] min-h-[260px]',
-    },
-    {
-      id: 'main',
-      category: 'UI/UX',
-      title: 'Main',
-      typeLabel: 'EMOTION TRACKING DASHBOARD',
-      role: 'UI/UX DESIGNER',
-      year: '2023',
-      tools: 'FIGMA · AUTO-LAYOUT · PROTOTYPING',
-      context:
-        'Primary operations console designed for rapid emotional state tracking, daily scheduling, and low-latency health task processing.',
-      accentColor: '#2E68F8',
-      previewSubtitle: 'Emotion & Routine Console',
-      positionClass: 'left-[17%] top-[6%]',
-      sizeClass: 'w-[20vw] h-[37vh] min-w-[230px] min-h-[270px]',
-    },
-    {
-      id: 'main1',
-      category: 'UI/UX',
-      title: 'Main1',
-      typeLabel: 'MEDICATION TIMELINE',
-      role: 'UI/UX ARCHITECT',
-      year: '2023',
-      tools: 'FIGMA · USER TESTING',
-      context:
-        'Iterative refinement of the daily routine and medication timeline architecture, organizing multi-tenant operational streams into clear chronological cards.',
-      accentColor: '#5B21B6',
-      previewSubtitle: 'Calendar & Dosing Schedule',
-      positionClass: 'left-[33%] top-[20%]',
-      sizeClass: 'w-[20vw] h-[37vh] min-w-[230px] min-h-[270px]',
-    },
-    {
-      id: 'intellilex',
-      category: 'UI/UX',
-      title: 'Intellilex',
-      typeLabel: 'AI FOR DYSLEXIA SUPPORT',
-      role: 'PROJECT MANAGER · UI/UX LEAD',
-      year: '2024',
-      tools: 'FIGMA · ACCESSIBILITY DESIGN',
-      context:
-        'A specialized accessibility reading environment featuring dynamic font weighting, phoneme separation, and adaptive pacing algorithms for dyslexic learners.',
-      accentColor: '#005BAA',
-      previewSubtitle: 'Dyslexia Reading Companion',
-      positionClass: 'left-[50%] top-[8%]',
-      sizeClass: 'w-[24vw] h-[38vh] min-w-[260px] min-h-[280px]',
-    },
-    {
-      id: 'onboarding',
-      category: 'UI/UX',
-      title: 'Onboarding',
-      typeLabel: 'ACTIVATION JOURNEY',
-      role: 'PRODUCT DESIGNER',
-      year: '2023',
-      tools: 'FIGMA · USER JOURNEY MAPPING',
-      context:
-        'A progressive disclosure user orientation sequence eliminating cognitive overwhelm through tactile stepped milestones and 3D donor heart iconography.',
-      accentColor: '#C81E1E',
-      previewSubtitle: 'VN Drops Welcome Sequence',
-      positionClass: 'left-[68%] top-[22%]',
-      sizeClass: 'w-[19vw] h-[36vh] min-w-[220px] min-h-[260px]',
-    },
-    {
-      id: 'vndrops',
-      category: 'UI/UX',
-      title: 'VNDrops',
-      typeLabel: 'AUTOMATIC BLOOD DONATION',
-      role: 'PROJECT MANAGER · UI/UX DESIGN',
-      year: '2023',
-      tools: 'FIGMA · PROTOTYPING · USER RESEARCH',
-      context:
-        'Emergency donor-recipient matching interface providing immediate dispatch clarity, urgent blood group SOS alerts, and verified transit routes.',
-      accentColor: '#DC2626',
-      previewSubtitle: 'Emergency Blood SOS Dispatch',
-      positionClass: 'left-[82%] top-[10%]',
-      sizeClass: 'w-[19vw] h-[38vh] min-w-[220px] min-h-[280px]',
-    },
-  ];
+      {
+        id: 'gresset',
+        category: 'UI/UX',
+        title: 'Gresset',
+        typeLabel: 'SUSTAINABILITY PLATFORM',
+        role: 'PRODUCT DESIGNER · UI/UX',
+        year: '2023',
+        tools: 'FIGMA · DESIGN SYSTEMS',
+        context:
+          'A digital carbon tracking and environmental stewardship interface mapping real-time resource consumption into actionable impact loops.',
+        accentColor: '#43B02A',
+        previewSubtitle: 'Eco Thrifting & Recycling',
+        positionClass: 'left-[1%] top-[12%]',
+        sizeClass: 'w-[19vw] h-[36vh] min-w-[220px] min-h-[260px]',
+      },
+      {
+        id: 'main',
+        category: 'UI/UX',
+        title: 'TamGiao',
+        typeLabel: 'EMOTION TRACKING DASHBOARD',
+        role: 'UI/UX DESIGNER',
+        year: '2023',
+        tools: 'FIGMA · AUTO-LAYOUT · PROTOTYPING',
+        context:
+          'Primary operations console designed for rapid emotional state tracking, daily scheduling, and low-latency health task processing.',
+        accentColor: '#2E68F8',
+        previewSubtitle: 'Emotion & Routine Console',
+        positionClass: 'left-[17%] top-[6%]',
+        sizeClass: 'w-[20vw] h-[37vh] min-w-[230px] min-h-[270px]',
+      },
+      {
+        id: 'main1',
+        category: 'UI/UX',
+        title: 'TamGiao',
+        typeLabel: 'MEDICATION TIMELINE',
+        role: 'UI/UX ARCHITECT',
+        year: '2023',
+        tools: 'FIGMA · USER TESTING',
+        context:
+          'Iterative refinement of the daily routine and medication timeline architecture, organizing multi-tenant operational streams into clear chronological cards.',
+        accentColor: '#5B21B6',
+        previewSubtitle: 'Calendar & Dosing Schedule',
+        positionClass: 'left-[33%] top-[20%]',
+        sizeClass: 'w-[20vw] h-[37vh] min-w-[230px] min-h-[270px]',
+      },
+      {
+        id: 'intellilex',
+        category: 'UI/UX',
+        title: 'Intellilex',
+        typeLabel: 'AI FOR DYSLEXIA SUPPORT',
+        role: 'PROJECT MANAGER · UI/UX LEAD',
+        year: '2024',
+        tools: 'FIGMA · ACCESSIBILITY DESIGN',
+        context:
+          'A specialized accessibility reading environment featuring dynamic font weighting, phoneme separation, and adaptive pacing algorithms for dyslexic learners.',
+        accentColor: '#005BAA',
+        previewSubtitle: 'Dyslexia Reading Companion',
+        positionClass: 'left-[50%] top-[8%]',
+        sizeClass: 'w-[24vw] h-[38vh] min-w-[260px] min-h-[280px]',
+      },
+      {
+        id: 'onboarding',
+        category: 'UI/UX',
+        title: 'VnDrops',
+        typeLabel: 'ACTIVATION JOURNEY',
+        role: 'PRODUCT DESIGNER',
+        year: '2023',
+        tools: 'FIGMA · USER JOURNEY MAPPING',
+        context:
+          'A progressive disclosure user orientation sequence eliminating cognitive overwhelm through tactile stepped milestones and 3D donor heart iconography.',
+        accentColor: '#C81E1E',
+        previewSubtitle: 'VN Drops Welcome Sequence',
+        positionClass: 'left-[68%] top-[22%]',
+        sizeClass: 'w-[19vw] h-[36vh] min-w-[220px] min-h-[260px]',
+      },
+      {
+        id: 'vndrops',
+        category: 'UI/UX',
+        title: 'VnDrops',
+        typeLabel: 'AUTOMATIC BLOOD DONATION',
+        role: 'PROJECT MANAGER · UI/UX DESIGN',
+        year: '2023',
+        tools: 'FIGMA · PROTOTYPING · USER RESEARCH',
+        context:
+          'Emergency donor-recipient matching interface providing immediate dispatch clarity, urgent blood group SOS alerts, and verified transit routes.',
+        accentColor: '#DC2626',
+        previewSubtitle: 'Emergency Blood SOS Dispatch',
+        positionClass: 'left-[82%] top-[10%]',
+        sizeClass: 'w-[19vw] h-[38vh] min-w-[220px] min-h-[280px]',
+      },
+    ];
 
   return (
     <div className="relative w-full h-full flex flex-col lg:flex-row items-center justify-between px-[6vw] lg:px-[8vw] select-none pointer-events-auto">
       {/* Category Heading & Description (~25% of panel) */}
       <div className="w-full lg:w-[25vw] shrink-0 z-20 mb-8 lg:mb-0">
         <div className="flex items-center gap-3 mb-2">
-          <span className="font-serif italic text-[16px] text-[#244B57] font-medium leading-none">
+          <span className="font-serif italic text-[16px] text-[#F3E7D0] font-medium leading-none">
             02
           </span>
-          <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#244B57] font-medium font-medium">
+          <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#F3E7D0] font-medium font-medium">
             DIGITAL INTERFACES
           </span>
         </div>
 
-        <h3 className="font-serif text-[42px] sm:text-[52px] lg:text-[64px] leading-[0.92] tracking-[-0.03em] text-[#173A46] font-normal">
+        <h3 className="font-serif text-[42px] sm:text-[52px] lg:text-[64px] leading-[0.92] tracking-[-0.03em] text-[#F3E7D0] font-normal">
           Interface
           <br />
           as a <span className="italic font-normal">dialogue.</span>
         </h3>
 
-        <p className="mt-4 max-w-[340px] font-sans text-[13px] lg:text-[14px] leading-[1.65] text-[#244B57] font-medium">
+        <p className="mt-4 max-w-[340px] font-sans text-[13px] lg:text-[14px] leading-[1.65] text-[#F3E7D0] font-medium">
           Layered software surfaces built around clarity, low friction, accessibility, and responsive human workflows.
         </p>
 
-        <div className="mt-6 flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.16em] text-[#244B57] font-medium">
+        <div className="mt-6 flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.16em] text-[#F3E7D0] font-medium">
           <span className="w-1.5 h-1.5 rounded-full bg-[#173A46]/40" />
           <span>ACCESSIBILITY · INFORMATION ARCHITECTURE · DESIGN SYSTEMS</span>
         </div>

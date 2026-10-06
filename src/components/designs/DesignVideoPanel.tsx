@@ -27,7 +27,7 @@ export const DesignVideoPanel: React.FC<DesignVideoPanelProps> = ({ onSelectItem
   const quanQuanVideo: DesignItemData = {
     id: 'video-quan-quan',
     category: 'VIDEO',
-    title: 'QUÁN QUÂN - BA CỤC ĐÁ',
+    title: 'QUÁN QUÂN',
     typeLabel: 'CHAMPIONSHIP REVEAL FILM',
     role: 'DIRECTOR & LEAD EDITOR',
     year: '2023',

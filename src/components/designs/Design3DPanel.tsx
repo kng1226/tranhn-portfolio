@@ -40,7 +40,7 @@ export const Design3DPanel: React.FC<Design3DPanelProps> = ({ onSelectItem, redu
   const ava3DItem: DesignItemData = {
     id: 'ava',
     category: '3D',
-    title: 'AVA',
+    title: 'Xplorators 2026 Grand Finale',
     typeLabel: '3D CELESTIAL COMPASS · KEY VISUAL',
     role: '3D VISUAL ARTIST & MODELER',
     year: '2026',
@@ -53,7 +53,7 @@ export const Design3DPanel: React.FC<Design3DPanelProps> = ({ onSelectItem, redu
   const supportingItemA: DesignItemData = {
     id: 'final-10',
     category: '3D',
-    title: 'final 10',
+    title: 'Webinar Unravelling the Cosmos of Blockchain',
     typeLabel: '3D MODULAR BLOCKCHAIN CUBE',
     role: '3D MODELER & DESIGNER',
     year: '2025',
@@ -87,25 +87,25 @@ export const Design3DPanel: React.FC<Design3DPanelProps> = ({ onSelectItem, redu
       {/* ============================================================ */}
       <div className="w-full lg:w-[28vw] shrink-0 z-20 mb-8 lg:mb-0">
         <div className="flex items-center gap-3 mb-2">
-          <span className="font-serif italic text-[16px] text-[#244B57] font-medium leading-none">
+          <span className="font-serif italic text-[16px] text-[#F3E7D0] font-medium leading-none">
             01
           </span>
-          <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#244B57] font-medium font-medium">
+          <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#F3E7D0] font-medium font-medium">
             THREE DIMENSIONS
           </span>
         </div>
 
-        <h3 className="font-serif text-[42px] sm:text-[52px] lg:text-[64px] leading-[0.92] tracking-[-0.03em] text-[#173A46] font-normal">
+        <h3 className="font-serif text-[42px] sm:text-[52px] lg:text-[64px] leading-[0.92] tracking-[-0.03em] text-[#F3E7D0] font-normal">
           Thinking
           <br />
           in <span className="italic font-normal">volume.</span>
         </h3>
 
-        <p className="mt-4 max-w-[340px] font-sans text-[13px] lg:text-[14px] leading-[1.65] text-[#244B57] font-medium">
+        <p className="mt-4 max-w-[340px] font-sans text-[13px] lg:text-[14px] leading-[1.65] text-[#F3E7D0] font-medium">
           Exploring form, space, material, and directional light beyond the flat plane.
         </p>
 
-        <div className="mt-6 flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.16em] text-[#244B57] font-medium">
+        <div className="mt-6 flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.16em] text-[#F3E7D0] font-medium">
           <span className="w-1.5 h-1.5 rounded-full bg-[#173A46]/40" />
           <span>FORM · REFLECTION · LIGHT · SHADOW</span>
         </div>
@@ -119,13 +119,12 @@ export const Design3DPanel: React.FC<Design3DPanelProps> = ({ onSelectItem, redu
         <button
           onClick={() => onSelectItem(ava3DItem)}
           type="button"
-          aria-label="View AVA 3D Celestial Compass Project"
+          aria-label="View Xplorators 2026 Grand Finale"
           style={{
             transform: reducedMotion
               ? 'none'
-              : `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${
-                  isHovered ? 1.02 : 1
-                })`,
+              : `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${isHovered ? 1.02 : 1
+              })`,
           }}
           className="relative z-10 w-[82vw] sm:w-[54vw] lg:w-[40vw] aspect-[4/3] rounded-[36px] bg-gradient-to-br from-white/45 via-[#F3E7D0]/25 to-[#173A46]/10 backdrop-blur-md p-4 sm:p-6 flex flex-col justify-between shadow-[0_28px_70px_rgba(23,58,70,0.14)] hover:shadow-[0_36px_90px_rgba(23,58,70,0.22)] transition-all duration-500 cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#173A46]/50"
         >
@@ -144,7 +143,7 @@ export const Design3DPanel: React.FC<Design3DPanelProps> = ({ onSelectItem, redu
             <div className="absolute bottom-3 left-4 right-4 z-20 flex items-center justify-between p-2 rounded-xl bg-black/40 backdrop-blur-md border border-white/15 pointer-events-none">
               <div className="text-left">
                 <span className="font-serif text-[12px] sm:text-[14px] text-white font-medium block leading-tight">
-                  AVA — Celestial Compass
+                  Celestial Compass
                 </span>
                 <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-white/70">
                   XPLORATORS 2026 GRAND FINALE
@@ -161,7 +160,7 @@ export const Design3DPanel: React.FC<Design3DPanelProps> = ({ onSelectItem, redu
         <button
           onClick={() => onSelectItem(supportingItemA)}
           type="button"
-          aria-label="View final 10 3D Modular Blockchain Cube"
+          aria-label="View Webinar Unravelling the Cosmos of Blockchain"
           style={{
             transform: reducedMotion
               ? 'none'
@@ -174,7 +173,7 @@ export const Design3DPanel: React.FC<Design3DPanelProps> = ({ onSelectItem, redu
           </div>
           <div className="mt-1 flex items-center justify-between px-1">
             <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#244B57] font-medium truncate font-medium">
-              final 10
+              Webinar Unravelling the Cosmos of Blockchain
             </span>
             <span className="text-[9px] text-[#244B57] font-medium group-hover:translate-x-0.5 transition-transform">↗</span>
           </div>
