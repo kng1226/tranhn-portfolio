@@ -22,6 +22,8 @@ const SECTION_IDS = [
 
 const MAX_DEVICE_PIXEL_RATIO = 1.25;
 const MAX_CACHED_FRAMES = 12;
+const PREFETCH_AHEAD = 10;
+const PREFETCH_BEHIND = 2;
 
 export const BackgroundScene: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -118,7 +120,7 @@ export const BackgroundScene: React.FC = () => {
     let requestedFrame = 1;
     let lastDrawn = '';
 
-    const drawImage = (img: HTMLImageElement) => {
+    const drawImage = (img: HTMLImageElement, mode: string, frame: number) => {
       const cw = window.innerWidth;
       const ch = window.innerHeight;
       const cr = cw / ch;
@@ -131,7 +133,52 @@ export const BackgroundScene: React.FC = () => {
       }
       ctx.clearRect(0, 0, cw, ch);
       ctx.drawImage(img, x, y, w, h);
-      lastDrawn = `${currentMode}:${currentFrame}`;
+      lastDrawn = `${mode}:${frame}`;
+    };
+
+    const drawNearestLoadedFrame = (mode: string, targetFrame: number) => {
+      if (currentMode !== mode || currentFrame !== targetFrame) return;
+
+      const targetImage = cache[mode]?.get(targetFrame);
+      if (targetImage?.complete && targetImage.naturalWidth > 0) {
+        const key = `${mode}:${targetFrame}`;
+        if (lastDrawn !== key) drawImage(targetImage, mode, targetFrame);
+        return;
+      }
+
+      if (!lastDrawn.startsWith(`${mode}:`)) {
+        const closest = [...(cache[mode]?.entries() ?? [])]
+          .filter(([, image]) => image.complete && image.naturalWidth > 0)
+          .sort((a, b) => Math.abs(a[0] - targetFrame) - Math.abs(b[0] - targetFrame))[0];
+        if (closest) drawImage(closest[1], mode, closest[0]);
+        return;
+      }
+      const drawnFrame = Number(lastDrawn.split(':')[1]);
+      const direction = Math.sign(targetFrame - drawnFrame);
+      if (!direction) return;
+
+      const nearest = [...(cache[mode]?.entries() ?? [])]
+        .filter(([frame, img]) => {
+          if (!img.complete || img.naturalWidth === 0) return false;
+          return direction > 0
+            ? frame > drawnFrame && frame < targetFrame
+            : frame < drawnFrame && frame > targetFrame;
+        })
+        .sort((a, b) => Math.abs(a[0] - targetFrame) - Math.abs(b[0] - targetFrame))[0];
+
+      if (nearest) drawImage(nearest[1], mode, nearest[0]);
+    };
+
+    const cacheLoadedFrame = (mode: string, frame: number, img: HTMLImageElement) => {
+      cache[mode].set(frame, img);
+      const nearestFirst = [...cache[mode].keys()].sort(
+        (a, b) => Math.abs(a - currentFrame) - Math.abs(b - currentFrame),
+      );
+      while (nearestFirst.length > MAX_CACHED_FRAMES) {
+        const oldFrame = nearestFirst.pop()!;
+        if (oldFrame !== currentFrame && oldFrame !== requestedFrame) cache[mode].delete(oldFrame);
+      }
+      drawNearestLoadedFrame(mode, currentFrame);
     };
 
     const renderFrame = (mode: string, frame: number) => {
@@ -144,64 +191,58 @@ export const BackgroundScene: React.FC = () => {
       if (img?.complete && img.naturalWidth > 0) {
         currentMode = mode;
         currentFrame = frame;
-        if (lastDrawn !== key) drawImage(img);
+        if (lastDrawn !== key) drawImage(img, mode, frame);
       } else if (!img && !pending.has(key) && !failed.has(key)) {
         const newImg = new Image();
         newImg.decoding = 'async';
         pending.set(key, newImg);
-        newImg.onload = () => {
+        newImg.onload = async () => {
           pending.delete(key);
-          cache[mode].set(frame, newImg);
-          const nearby = [...cache[mode].entries()].sort((a, b) => Math.abs(a[0] - currentFrame) - Math.abs(b[0] - currentFrame));
-          while (nearby.length > MAX_CACHED_FRAMES) {
-            const [oldFrame] = nearby.pop()!;
-            if (oldFrame !== currentFrame && oldFrame !== requestedFrame) cache[mode].delete(oldFrame);
-          }
-          // Only paint if this is still the active frame
-          if (currentMode === mode && currentFrame === frame) {
-            drawImage(newImg);
-          }
+          try { await newImg.decode(); } catch { /* load may already have decoded */ }
+          if (newImg.naturalWidth > 0) cacheLoadedFrame(mode, frame, newImg);
         };
         newImg.onerror = () => { pending.delete(key); failed.add(key); };
         newImg.src = getPath(mode, frame);
       }
+      drawNearestLoadedFrame(mode, frame);
     };
 
     const renderCurrent = () => renderFrame(currentMode, currentFrame);
 
     // ── Smart preloader: load adjacent frames dynamically ──────────────────────
 
-    const preloadNearby = (mode: string, frame: number) => {
+    const preloadNearby = (mode: string, frame: number, direction: number) => {
+      const ahead = direction >= 0 ? PREFETCH_AHEAD : PREFETCH_BEHIND;
+      const behind = direction >= 0 ? PREFETCH_BEHIND : PREFETCH_AHEAD;
       for (const [key, img] of pending) {
         const [pendingMode, pendingFrameStr] = key.split(':');
         const pendingFrame = Number(pendingFrameStr);
-        if (pendingMode !== mode || Math.abs(pendingFrame - frame) > 8) {
+        const distance = Math.abs(pendingFrame - frame);
+        if (pendingMode !== mode || distance > Math.max(ahead, behind) + 12) {
           img.onload = null;
           img.onerror = null;
           img.removeAttribute('src');
           pending.delete(key);
         }
       }
-      for (let offset = 1; offset <= 2; offset++) {
-        for (const candidate of [frame - offset, frame + offset]) {
-          if (candidate < 1 || candidate > numFrames) continue;
-          const key = `${mode}:${candidate}`;
-          if (cache[mode].has(candidate) || pending.has(key) || failed.has(key)) continue;
-          const img = new Image();
-          img.decoding = 'async';
-          pending.set(key, img);
-          img.onload = () => {
-            pending.delete(key);
-            cache[mode].set(candidate, img);
-            const loaded = [...cache[mode].keys()];
-            while (loaded.length > MAX_CACHED_FRAMES) {
-              const old = loaded.shift()!;
-              if (old !== currentFrame && old !== requestedFrame) cache[mode].delete(old);
-            }
-          };
-          img.onerror = () => { pending.delete(key); failed.add(key); };
-          img.src = getPath(mode, candidate);
-        }
+      const candidates = [
+        ...Array.from({ length: ahead }, (_, i) => frame + direction * (i + 1)),
+        ...Array.from({ length: behind }, (_, i) => frame - direction * (i + 1)),
+      ];
+      for (const candidate of candidates) {
+        if (candidate < 1 || candidate > numFrames) continue;
+        const key = `${mode}:${candidate}`;
+        if (cache[mode].has(candidate) || pending.has(key) || failed.has(key)) continue;
+        const img = new Image();
+        img.decoding = 'async';
+        pending.set(key, img);
+        img.onload = async () => {
+          pending.delete(key);
+          try { await img.decode(); } catch { /* load may already have decoded */ }
+          if (img.naturalWidth > 0) cacheLoadedFrame(mode, candidate, img);
+        };
+        img.onerror = () => { pending.delete(key); failed.add(key); };
+        img.src = getPath(mode, candidate);
       }
     };
 
@@ -239,8 +280,9 @@ export const BackgroundScene: React.FC = () => {
 
       // Only redraw when the frame actually changes — avoids redundant canvas work
       if (mode !== lastRenderedMode || frame !== lastRenderedFrame) {
+        const direction = frame >= lastRenderedFrame ? 1 : -1;
         renderFrame(mode, frame);
-        preloadNearby(mode, frame);
+        preloadNearby(mode, frame, direction);
         lastRenderedMode = mode;
         lastRenderedFrame = frame;
       }
