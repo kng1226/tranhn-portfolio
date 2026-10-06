@@ -27,7 +27,7 @@ export const ScrollControl: React.FC<ScrollControlProps> = ({
 
   return (
     <div
-      className={`fixed right-6 sm:right-8 bottom-6 sm:bottom-8 z-[100] transition-opacity duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+      className={`fixed right-8 bottom-8 z-[100] transition-opacity duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${
         loaded ? 'opacity-100' : 'opacity-0'
       }`}
     >

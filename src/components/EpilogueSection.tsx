@@ -17,65 +17,30 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
   onNavOpacityChange,
 }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
 
-  // Check mobile viewport and prefers-reduced-motion
+  // Keep the compact reading layout for phones; use the editorial column on tablet and desktop.
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024);
+      setIsMobile(window.innerWidth < 768);
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);
 
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReducedMotion(mediaQuery.matches);
-    const motionListener = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
-    mediaQuery.addEventListener('change', motionListener);
-
     return () => {
       window.removeEventListener('resize', checkMobile);
-      mediaQuery.removeEventListener('change', motionListener);
     };
   }, []);
 
-  // Frame-perfect requestAnimationFrame scroll listener
+  // Match the fixed controls to the dark ocean while the epilogue is visible.
   useEffect(() => {
     let animationFrameId: number;
 
     const updateScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const totalScrollableDistance = rect.height - windowHeight;
-
-      if (totalScrollableDistance <= 0) return;
-
-      const currentScroll = -rect.top;
-      const rawProgress = currentScroll / totalScrollableDistance;
-      const clamped = Math.min(1, Math.max(0, rawProgress));
-
-      setScrollProgress((previous) =>
-        Math.abs(clamped - previous) >= 0.008 || clamped === 0 || clamped === 1 ? clamped : previous,
-      );
-
-      // Adaptive theming & navbar opacity based on progression
-      // 0.0 - 0.38: Meadow background -> light theme
-      // 0.38 - 1.0: Ocean background -> dark theme
-      if (clamped >= 0.38) {
-        onThemeChange?.('dark');
-      } else if (rect.top <= windowHeight * 0.5 && rect.bottom >= windowHeight * 0.2) {
-        onThemeChange?.('light');
-      }
-
-      // At final resting state (>=0.72), reduce navbar opacity so it stays quiet
-      if (clamped >= 0.72) {
-        const fadeRatio = Math.min(1, (clamped - 0.72) / 0.15);
-        onNavOpacityChange?.(1 - fadeRatio * 0.6); // 1.0 -> 0.4
-      } else {
-        onNavOpacityChange?.(1);
-      }
+      if (rect.top <= window.innerHeight && rect.bottom >= 0) onThemeChange?.('dark');
+      onNavOpacityChange?.(1);
     };
 
     const handleScroll = () => {
@@ -106,61 +71,25 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
     }
   };
 
-  // Environmental Interpolation Curves
-  // Phase 1 (0.0 to 0.38): Meadow with Contact Info
-  // Phase 2 (0.35 to 0.70): Hawk crosses coast into open water, "Into the open, again."
-  // Phase 3 (0.68 to 1.0): Camera rises top-down, "THANK YOU FOR WANDERING", Footer
-  // Staggered Opacities for Phase 1
-  const bodyOpacity = Math.max(0, 1 - scrollProgress * 6);
-  const contactOpacity = Math.max(0, 1 - scrollProgress * 4.5);
-  const headingOpacity = Math.max(0, 1 - scrollProgress * 3);
-  
-  const p1Opacity = headingOpacity; // Used for container/gradient
-  const p1Y = -scrollProgress * 50;
-
-  const p2Start = 0.35;
-  const p2End = 0.72;
-  const p2Opacity =
-    scrollProgress < p2Start
-      ? 0
-      : scrollProgress > 0.68
-      ? Math.max(0, 1 - (scrollProgress - 0.68) * 5)
-      : Math.min(1, (scrollProgress - p2Start) * 4);
-
-  const p3Start = 0.68;
-  const p3Opacity = scrollProgress < p3Start ? 0 : Math.min(1, (scrollProgress - p3Start) * 3.8);
-
-  // Hawk flight coordinates across second coast into open ocean
-  // X: 18vw -> 88vw
-  // Y: 48vh -> 20vh
-  // Scale: 1.0 -> 0.4
-  const hawkFlightX = 18 + scrollProgress * 70;
-  const hawkFlightY = 48 - Math.sin(scrollProgress * Math.PI) * 26 - scrollProgress * 10;
-  const hawkScale = Math.max(0.38, 1 - scrollProgress * 0.62);
-
-  // Landscape camera movement: meadow shifts downward, ocean fills upward
-  const meadowShiftY = Math.min(100, scrollProgress * 115);
-
   return (
     <section
       id="epilogue-section"
       ref={sectionRef}
       aria-label="Section 05 — Epilogue & Footer"
-      className={`relative w-full ${isMobile ? 'min-h-screen py-16' : 'h-[360vh]'} z-20`}
+      className="relative z-20 min-h-screen w-full"
     >
       {/* ============================================================ */}
-      {/* DESKTOP PINNED VIEWPORT (sticky top-0 h-screen overflow-hidden) */}
+      {/* DESKTOP EDITORIAL LAYOUT */}
       {/* ============================================================ */}
       {!isMobile ? (
-        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between">
+        <div className="relative min-h-screen w-full overflow-hidden">
 
 
           {/* Localized Gradient Overlay for readability */}
           <div 
             className="absolute inset-0 pointer-events-none z-20"
             style={{
-              background: 'linear-gradient(90deg, rgba(9, 35, 44, 0.62) 0%, rgba(9, 35, 44, 0.42) 28%, rgba(9, 35, 44, 0.10) 52%, rgba(9, 35, 44, 0.00) 72%)',
-              opacity: p1Opacity
+              background: 'linear-gradient(90deg, rgba(8,31,39,0.58) 0%, rgba(8,31,39,0.36) 30%, rgba(8,31,39,0.10) 52%, rgba(8,31,39,0) 68%)',
             }}
           />
 
@@ -170,14 +99,13 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
           {/* ======================================================== */}
           <div
             style={{
-              opacity: p1Opacity,
-              transform: `translate3d(0, ${p1Y}px, 0)`,
-              pointerEvents: scrollProgress > 0.38 ? 'none' : 'auto',
+              opacity: 1,
+              pointerEvents: 'auto',
             }}
-            className="relative z-30 pt-[17vh] lg:pt-[18vh] pl-[7vw] w-[min(48vw,640px)] max-w-[640px] transition-opacity duration-300"
+            className="relative z-30 mx-auto w-full max-w-[1600px] px-[7vw] pt-[20vh] pb-[8vh] min-[1280px]:pt-[18vh] min-[1600px]:pt-[17vh]"
           >
             {/* Chapter Marker */}
-            <div className="flex items-center gap-3 mb-6" style={{ opacity: headingOpacity }}>
+            <div className="flex items-center gap-4 mb-0">
               <span className="font-serif italic text-[15px] text-[#F3E7D0]/55 leading-none">
                 05
               </span>
@@ -191,30 +119,28 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
             </div>
 
             {/* Main Section Heading */}
-            <h2 
-              className="font-serif text-[clamp(48px,5vw,72px)] leading-[0.93] tracking-[-0.03em] text-[#F3E7D0] font-normal w-full"
-              style={{ opacity: headingOpacity }}
-            >
+            <div className="mt-8 w-[min(36vw,520px)] max-[1279px]:w-[min(44vw,520px)] md:max-lg:w-[65vw]">
+            <h2 className="font-serif text-[clamp(48px,4.5vw,66px)] min-[1600px]:text-[clamp(54px,4.8vw,76px)] leading-[0.95] tracking-[-0.03em] text-[#F3E7D0] font-normal w-full">
               Every edge
               <br />
-              becomes <span className="italic">another beginning.</span>
+              becomes <span className="italic">another<br />beginning.</span>
             </h2>
 
             {/* Supporting Copy */}
-            <div style={{ opacity: bodyOpacity }}>
-              <p className="max-w-[460px] mt-6 font-sans text-[14px] lg:text-[15px] leading-[1.65] text-[#F3E7D0]/76">
+            <div>
+              <p className="max-w-[460px] mt-7 font-sans text-[14px] lg:text-[15px] max-[1279px]:text-[14px] leading-[1.65] text-[#F3E7D0]/78">
                 A portfolio can only show where I have been so far.
                 <br className="hidden sm:inline" />
                 There is still more to learn, build and make.
               </p>
 
-              <p className="mt-4 max-w-[450px] font-sans text-[13px] leading-[1.6] text-[#F3E7D0]/56">
+              <p className="mt-[18px] max-w-[420px] font-sans text-[13px] leading-[1.6] text-[#F3E7D0]/58">
                 If something here made you curious, I’d be glad to continue the conversation.
               </p>
             </div>
 
             {/* Editorial Contact Block */}
-            <div className="mt-5 flex flex-col items-start gap-4 border-none pt-0" style={{ opacity: contactOpacity }}>
+            <div className="mt-7 flex flex-col items-start gap-4 border-none pt-0">
               {/* Identity & Location & Email */}
               <div className="space-y-2">
                 <div>
@@ -225,7 +151,7 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
                     Hanoi, Vietnam
                   </span>
                 </div>
-                <div className="space-y-1 font-sans text-[12px] text-[#F3E7D0]/68">
+                <div className="mt-[10px] space-y-1 font-sans text-[12px] leading-[1.8] text-[#F3E7D0]/70">
                   <a
                     href="mailto:tranhn.work@gmail.com"
                     className="block hover:text-[#F3E7D0] transition-colors"
@@ -244,7 +170,7 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
               </div>
 
               {/* Two Actions */}
-              <div className="flex items-center gap-5 mt-1">
+              <div className="flex items-center gap-5 mt-[22px]">
                 {/* Primary Action Button */}
                 <button
                   onClick={onContactClick || (() => (window.location.href = 'mailto:tranhn.work@gmail.com'))}
@@ -265,152 +191,47 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
                 </button>
               </div>
             </div>
+            </div>
           </div>
 
-          {/* ======================================================== */}
-          {/* PHASE 2: EPILOGUE POETRY OVER CALM EXPANDING OCEAN       */}
-          {/* Visible between 0.35 and 0.68 progress                   */}
-          {/* ======================================================== */}
-          <div
-            style={{
-              opacity: p2Opacity,
-              pointerEvents: scrollProgress >= 0.35 && scrollProgress <= 0.68 ? 'auto' : 'none',
-            }}
-            className="absolute left-[7vw] top-[28vh] z-30 transition-opacity duration-500 max-w-xl"
-          >
-            <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#F3E7D0]/60 font-medium block mb-3">
-              EPILOGUE
-            </span>
-
-            <h3 className="font-serif text-[64px] lg:text-[80px] leading-[0.92] text-[#F3E7D0] font-normal tracking-[-0.03em] drop-shadow-sm">
-              Into the <span className="italic">open,</span>
-              <br />
-              again.
-            </h3>
-
-            <p className="mt-6 font-sans text-[15px] leading-[1.5] text-[#F3E7D0]/65">
-              Not the same place.
-              <br />
-              Not quite the same person.
-            </p>
-          </div>
-
-          {/* ======================================================== */}
-          {/* PHASE 3: FINAL RESTING STATE (Top-Down Ocean View)       */}
-          {/* Visible between 0.68 and 1.0 progress                    */}
-          {/* ======================================================== */}
-          <div
-            style={{
-              opacity: p3Opacity,
-              pointerEvents: scrollProgress >= 0.68 ? 'auto' : 'none',
-            }}
-            className="absolute inset-0 z-30 transition-opacity duration-700 pointer-events-none"
-          >
-            <div className="absolute top-[46%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full px-6">
-              <h4 className="font-serif text-[18px] lg:text-[20px] text-[#F3E7D0]/88 font-normal drop-shadow-sm">
-                THANK YOU FOR WANDERING WITH ME.
-              </h4>
-
-              <div className="mt-3 font-sans text-[9px] uppercase tracking-[0.18em] text-[#F3E7D0]/42">
-                NGUYỄN TRÂM ANH PORTFOLIO — 2026
+            <footer className="relative z-30 mx-auto grid w-full max-w-[1600px] grid-cols-1 gap-4 border-t border-[#F3E7D0]/15 px-[7vw] py-5 font-sans text-[10px] text-[#F3E7D0]/60 sm:grid-cols-3 sm:items-center">
+              <span className="font-serif text-[14px] text-[#F3E7D0]/82">NGUYỄN TRÂM ANH</span>
+              <div className="flex flex-wrap gap-x-5 gap-y-2 sm:justify-center">
+                <a href="mailto:tranhn.work@gmail.com" className="hover:text-[#F3E7D0] transition-colors">
+                  tranhn.work@gmail.com
+                </a>
+                <a href="https://linkedin.com/in/tranhng" target="_blank" rel="noopener noreferrer" className="hover:text-[#F3E7D0] transition-colors">
+                  LINKEDIN ↗
+                </a>
               </div>
-
               <button
                 onClick={handleScrollToTop}
                 type="button"
-                className="mt-6 font-sans text-[10px] uppercase tracking-[0.17em] text-[#F3E7D0]/58 hover:text-[#F3E7D0] transition-colors cursor-pointer"
+                className="text-left uppercase tracking-[0.14em] hover:text-[#F3E7D0] transition-colors sm:text-right"
               >
                 RETURN TO THE BEGINNING ↑
               </button>
-            </div>
+            </footer>
           </div>
-
-          {/* ======================================================== */}
-          {/* INTEGRATED DESKTOP FOOTER                                */}
-          {/* Strictly visible ONLY in Phase 3 ocean resting state     */}
-          {/* ======================================================== */}
-          <footer
-            style={{
-              opacity: p3Opacity,
-              pointerEvents: scrollProgress >= 0.72 ? 'auto' : 'none',
-              transition: 'opacity 0.4s ease-out',
-            }}
-            className="absolute bottom-0 left-0 right-0 z-30 border-t border-[#F3E7D0]/10"
-          >
-            <div className="grid grid-cols-3 items-end px-[48px] py-[20px] pb-[24px]">
-              {/* LEFT COLUMN */}
-              <div className="text-left">
-                <span className="font-serif text-[16px] text-[#F3E7D0]/82 block leading-tight">
-                  NGUYỄN TRÂM ANH
-                </span>
-                <span className="mt-1 font-sans text-[8px] uppercase tracking-[0.16em] text-[#F3E7D0]/38 block">
-                  Business · Technology · Design
-                </span>
-              </div>
-
-              {/* CENTER COLUMN */}
-              <div className="text-center space-y-1">
-                <div>
-                  <span className="font-sans text-[8px] uppercase tracking-[0.18em] text-[#F3E7D0]/30 block leading-none">
-                    EMAIL
-                  </span>
-                  <a
-                    href="mailto:tranhn.work@gmail.com"
-                    className="font-sans text-[10px] text-[#F3E7D0]/58 hover:text-[#F3E7D0] transition-colors mt-0.5 block"
-                  >
-                    tranhn.work@gmail.com
-                  </a>
-                </div>
-                <div className="pt-2">
-                  <span className="font-sans text-[8px] uppercase tracking-[0.18em] text-[#F3E7D0]/30 block leading-none">
-                    LINKEDIN
-                  </span>
-                  <a
-                    href="https://linkedin.com/in/tranhng"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-sans text-[10px] text-[#F3E7D0]/58 hover:text-[#F3E7D0] transition-colors mt-0.5 block"
-                  >
-                    linkedin.com/in/tranhng
-                  </a>
-                </div>
-              </div>
-
-              {/* RIGHT COLUMN */}
-              <div className="text-right flex flex-col items-end">
-                <span className="font-sans text-[8px] uppercase tracking-[0.18em] text-[#F3E7D0]/30 block leading-none">
-                  PORTFOLIO 2026
-                </span>
-                <button
-                  onClick={handleScrollToTop}
-                  type="button"
-                  className="mt-1.5 font-sans text-[10px] text-[#F3E7D0]/58 hover:text-[#F3E7D0] transition-colors cursor-pointer block"
-                >
-                  BACK TO TOP ↑
-                </button>
-              </div>
-            </div>
-          </footer>
-        </div>
       ) : (
         /* ============================================================ */
         /* MOBILE VERTICAL STORYTELLING LAYOUT (<1024px)               */
         /* Clean vertical sequence with generous clearance              */
         /* ============================================================ */
-        <div className="w-full px-[5vw] pt-[17vh] pb-[80px] space-y-16 relative z-30">
+        <div className="w-full px-5 pt-[120px] pb-16 space-y-12 relative z-30">
           
           {/* Mobile Localized Gradient Overlay for readability */}
           <div 
             className="absolute inset-0 pointer-events-none z-0"
             style={{
-              background: 'linear-gradient(90deg, rgba(9, 35, 44, 0.72) 0%, rgba(9, 35, 44, 0.30) 60%, transparent 100%)',
+              background: 'linear-gradient(90deg, rgba(8,31,39,0.58) 0%, rgba(8,31,39,0.36) 30%, rgba(8,31,39,0.10) 52%, rgba(8,31,39,0) 68%)',
             }}
           />
 
           {/* Mobile Chapter Intro */}
           <div className="space-y-4 relative z-10 w-[88vw] sm:w-[90vw]">
             <div className="flex items-center gap-3">
-              <span className="font-serif italic text-[15px] text-[#F3E7D0]/55 leading-none">
+            <span className="font-serif italic text-[14px] text-[#F3E7D0]/50 leading-none">
                 05
               </span>
               <span className="font-sans text-[10px] uppercase tracking-[0.20em] text-[#F3E7D0]/72 font-medium">
@@ -422,7 +243,7 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
               </span>
             </div>
 
-            <h2 className="font-serif text-[42px] leading-[0.95] tracking-tight text-[#F3E7D0] line-clamp-3">
+            <h2 className="font-serif text-[40px] min-[420px]:text-[44px] leading-[0.96] tracking-[-0.03em] text-[#F3E7D0]">
               Every edge
               <br />
               becomes <span className="italic font-normal">another beginning.</span>

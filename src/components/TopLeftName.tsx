@@ -34,10 +34,10 @@ export const TopLeftName: React.FC<TopLeftNameProps> = ({ themeMode = 'dark' }) 
     >
       <a
         href="#top"
-        className={`block group focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 rounded-2xl px-5 py-3.5 backdrop-blur-md border transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.08)] hover:scale-[1.02] ${
+        className={`block group focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 rounded-2xl px-5 py-3 backdrop-blur-md border transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.08)] hover:scale-[1.02] ${
           isLight
             ? 'bg-white/45 border-white/50 hover:bg-white/60'
-            : 'bg-[#0A1A20]/30 border-white/10 hover:bg-[#0A1A20]/50'
+            : 'bg-[#F3E7D0]/10 border-[#F3E7D0]/16 hover:bg-[#F3E7D0]/16'
         }`}
         aria-label="Nguyễn Trâm Anh portfolio top"
       >

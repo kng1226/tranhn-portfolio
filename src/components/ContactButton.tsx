@@ -32,7 +32,7 @@ export const ContactButton: React.FC<ContactButtonProps> = ({ onClick, themeMode
         className={`group inline-flex items-center gap-1 sm:gap-2 rounded-full p-2.5 sm:px-5 sm:py-2.5 backdrop-blur-md font-sans text-[9px] uppercase tracking-[0.16em] transition-all duration-500 whitespace-nowrap cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.06)] focus:outline-none focus-visible:ring-1 ${
           isLight
             ? 'border border-[#173A46]/18 bg-[#173A46]/8 text-[#173A46] hover:bg-[#173A46]/15 hover:border-[#173A46]/30 focus-visible:ring-[#173A46]/60'
-            : 'border border-[#F3E7D0]/22 bg-[#F3E7D0]/10 text-[#F3E7D0]/78 hover:bg-[#F3E7D0]/18 hover:text-[#F3E7D0] focus-visible:ring-[#F3E7D0]/60'
+            : 'border border-[#F3E7D0]/18 bg-[#F3E7D0]/8 text-[#F3E7D0]/72 hover:bg-[#F3E7D0]/16 hover:text-[#F3E7D0] focus-visible:ring-[#F3E7D0]/60'
         }`}
         aria-label="Contact Nguyễn Trâm Anh"
       >

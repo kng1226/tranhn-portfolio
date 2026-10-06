@@ -129,7 +129,7 @@ export const BackgroundScene: React.FC = () => {
       if (cr > ir) {
         w = cw; h = cw / ir; x = 0; y = (ch - h) / 2;
       } else {
-        w = ch * ir; h = ch; x = (cw - w) / 2; y = 0;
+        w = ch * ir; h = ch; x = (cw - w) * (mode === 'mobile' ? 0.6 : 0.5); y = 0;
       }
       ctx.clearRect(0, 0, cw, ch);
       ctx.drawImage(img, x, y, w, h);
