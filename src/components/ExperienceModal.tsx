@@ -122,7 +122,7 @@ export const ExperienceModal: React.FC<ExperienceModalProps> = ({
             </div>
 
             {/* Chapter Metadata */}
-            <span className="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.22em] text-[#F3E7D0]/60 block font-medium">
+            <span className="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.22em] text-[#F3E7D0] block font-medium">
               {isFPT ? 'PROFESSIONAL EXPERIENCE' : 'LEADERSHIP EXPERIENCE'}
             </span>
 
@@ -130,17 +130,17 @@ export const ExperienceModal: React.FC<ExperienceModalProps> = ({
               {isFPT ? '05/2026 — PRESENT' : '11/2024 — PRESENT'}
             </p>
 
-            <span className="mt-3 sm:mt-4 inline-block font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.18em] text-[#F3E7D0]/40">
+            <span className="mt-3 sm:mt-4 inline-block font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.18em] text-[#F3E7D0]">
               {isFPT ? 'EXPERIENCE 01' : 'LEADERSHIP 01'}
             </span>
           </div>
 
           {/* Strategic Focus Pillars */}
           <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-white/10">
-            <span className="font-sans text-[8px] uppercase tracking-[0.2em] text-[#F3E7D0]/40 block mb-2 sm:mb-2.5">
+            <span className="font-sans text-[8px] uppercase tracking-[0.2em] text-[#F3E7D0] block mb-2 sm:mb-2.5">
               STRATEGIC PILLARS
             </span>
-            <div className="flex flex-col gap-1 sm:gap-1.5 font-sans text-[9px] uppercase tracking-[0.16em] text-[#F3E7D0]/75 font-medium">
+            <div className="flex flex-col gap-1 sm:gap-1.5 font-sans text-[9px] uppercase tracking-[0.16em] text-[#F3E7D0] font-medium">
               {isFPT ? (
                 <>
                   <span className="flex items-center gap-2">
@@ -192,7 +192,7 @@ export const ExperienceModal: React.FC<ExperienceModalProps> = ({
         >
           {/* Header Lockup */}
           <div className="border-b border-[#173A46]/10 pb-4 sm:pb-5">
-            <span className="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-[#173A46]/50 block font-medium">
+            <span className="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-[#244B57] font-medium block font-medium">
               {isFPT ? 'ORGANISATION & ROLE' : 'ORGANISATION & LEADERSHIP'}
             </span>
             <h3
@@ -202,14 +202,14 @@ export const ExperienceModal: React.FC<ExperienceModalProps> = ({
               {isFPT ? 'FPT TELECOM' : 'TOMORROW ENTREPRENEURS CLUB — TEC FTU'}
             </h3>
 
-            <div className="mt-1.5 flex flex-wrap items-center gap-2 font-sans text-[11px] sm:text-[12px] text-[#173A46]/80">
+            <div className="mt-1.5 flex flex-wrap items-center gap-2 font-sans text-[11px] sm:text-[12px] text-[#244B57] font-medium">
               <span className="font-medium text-[#173A46]">
                 {isFPT ? 'IT Business Analyst Intern' : 'Head of TEC Go Department'}
               </span>
               <span aria-hidden="true" className="opacity-40">
                 ·
               </span>
-              <span className="text-[#173A46]/60">
+              <span className="text-[#244B57] font-medium">
                 {isFPT ? '05/2026 — Present' : '11/2024 — Present'}
               </span>
             </div>
@@ -231,13 +231,13 @@ export const ExperienceModal: React.FC<ExperienceModalProps> = ({
             <div className="space-y-6 sm:space-y-7">
               {/* Contribution 01: Workflow Automation with 25% Metric */}
               <div>
-                <span className="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-[#173A46]/60 block font-medium">
+                <span className="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-[#244B57] font-medium block font-medium">
                   WORKFLOW AUTOMATION
                 </span>
                 <h4 className="mt-1 font-serif text-[18px] sm:text-[19px] text-[#173A46] font-normal">
                   “Turning manual processes into working flows.”
                 </h4>
-                <p className="mt-2 font-sans text-[11.5px] sm:text-[12px] leading-[1.75] text-[#173A46]/75">
+                <p className="mt-2 font-sans text-[11.5px] sm:text-[12px] leading-[1.75] text-[#244B57] font-medium">
                   Designed and deployed automated workflows that streamlined cross-functional
                   processes, removed operational bottlenecks and reduced manual execution time by
                   25%.
@@ -248,7 +248,7 @@ export const ExperienceModal: React.FC<ExperienceModalProps> = ({
                   <span className="font-serif text-[32px] sm:text-[36px] text-[#173A46] leading-none font-normal">
                     25%
                   </span>
-                  <span className="font-sans text-[8px] uppercase tracking-[0.18em] text-[#173A46]/65 font-medium">
+                  <span className="font-sans text-[8px] uppercase tracking-[0.18em] text-[#244B57] font-medium font-medium">
                     REDUCTION IN MANUAL EXECUTION TIME
                   </span>
                 </div>
@@ -258,13 +258,13 @@ export const ExperienceModal: React.FC<ExperienceModalProps> = ({
 
               {/* Contribution 02: AI Agent Systems */}
               <div>
-                <span className="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-[#173A46]/60 block font-medium">
+                <span className="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-[#244B57] font-medium block font-medium">
                   AI AGENT SYSTEMS
                 </span>
                 <h4 className="mt-1 font-serif text-[18px] sm:text-[19px] text-[#173A46] font-normal">
                   “Building beyond individual workflows.”
                 </h4>
-                <p className="mt-2 font-sans text-[11.5px] sm:text-[12px] leading-[1.75] text-[#173A46]/75">
+                <p className="mt-2 font-sans text-[11.5px] sm:text-[12px] leading-[1.75] text-[#244B57] font-medium">
                   Directed the end-to-end lifecycle of specialized AI agents, from business
                   requirement gathering through deployment, continuous evaluation and performance
                   tuning.
@@ -275,13 +275,13 @@ export const ExperienceModal: React.FC<ExperienceModalProps> = ({
 
               {/* Contribution 03: Business <-> Technology */}
               <div>
-                <span className="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-[#173A46]/60 block font-medium">
+                <span className="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-[#244B57] font-medium block font-medium">
                   BUSINESS ↔ TECHNOLOGY
                 </span>
                 <h4 className="mt-1 font-serif text-[18px] sm:text-[19px] text-[#173A46] font-normal">
                   “Translating strategy into technical structure.”
                 </h4>
-                <p className="mt-2 font-sans text-[11.5px] sm:text-[12px] leading-[1.75] text-[#173A46]/75">
+                <p className="mt-2 font-sans text-[11.5px] sm:text-[12px] leading-[1.75] text-[#244B57] font-medium">
                   Translated strategic corporate objectives into actionable technical
                   specifications and structured database schemas, bridging business stakeholders
                   and engineering teams.
@@ -289,7 +289,7 @@ export const ExperienceModal: React.FC<ExperienceModalProps> = ({
               </div>
 
               {/* Footer Metadata */}
-              <div className="mt-6 sm:mt-7 pt-4 sm:pt-5 border-t border-[#173A46]/15 flex flex-wrap items-center gap-2 font-sans text-[8px] uppercase tracking-[0.16em] text-[#173A46]/55 font-medium">
+              <div className="mt-6 sm:mt-7 pt-4 sm:pt-5 border-t border-[#173A46]/15 flex flex-wrap items-center gap-2 font-sans text-[8px] uppercase tracking-[0.16em] text-[#244B57] font-medium font-medium">
                 <span>BUSINESS ANALYSIS</span>
                 <span aria-hidden="true" className="opacity-40">
                   ·
@@ -310,13 +310,13 @@ export const ExperienceModal: React.FC<ExperienceModalProps> = ({
             <div className="space-y-6 sm:space-y-7">
               {/* Contribution 01: Strategy & Market Intelligence */}
               <div>
-                <span className="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-[#173A46]/60 block font-medium">
+                <span className="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-[#244B57] font-medium block font-medium">
                   STRATEGY & MARKET INTELLIGENCE
                 </span>
                 <h4 className="mt-1 font-serif text-[18px] sm:text-[19px] text-[#173A46] font-normal">
                   “Turning complex markets into direction.”
                 </h4>
-                <p className="mt-2 font-sans text-[11.5px] sm:text-[12px] leading-[1.75] text-[#173A46]/75">
+                <p className="mt-2 font-sans text-[11.5px] sm:text-[12px] leading-[1.75] text-[#244B57] font-medium">
                   Directed comprehensive market analysis across AI, Fintech and Blockchain,
                   translating complex insights into actionable roadmaps that defined the
                   department’s overarching vision and strategic priorities.
@@ -327,13 +327,13 @@ export const ExperienceModal: React.FC<ExperienceModalProps> = ({
 
               {/* Contribution 02: Program & Stakeholder Leadership */}
               <div>
-                <span className="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-[#173A46]/60 block font-medium">
+                <span className="font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-[#244B57] font-medium block font-medium">
                   PROGRAM & STAKEHOLDER LEADERSHIP
                 </span>
                 <h4 className="mt-1 font-serif text-[18px] sm:text-[19px] text-[#173A46] font-normal">
                   “Moving complex initiatives forward.”
                 </h4>
-                <p className="mt-2 font-sans text-[11.5px] sm:text-[12px] leading-[1.75] text-[#173A46]/75">
+                <p className="mt-2 font-sans text-[11.5px] sm:text-[12px] leading-[1.75] text-[#244B57] font-medium">
                   Managed the execution of high-exposure, international-scale startup competitions
                   including Kawai Business Startup and Xplorators, coordinating cross-functional
                   workflows, aligning stakeholders and maintaining critical project timelines.
@@ -341,7 +341,7 @@ export const ExperienceModal: React.FC<ExperienceModalProps> = ({
               </div>
 
               {/* Footer Metadata */}
-              <div className="mt-6 sm:mt-7 pt-4 sm:pt-5 border-t border-[#173A46]/15 flex flex-wrap items-center gap-2 font-sans text-[8px] uppercase tracking-[0.16em] text-[#173A46]/55 font-medium">
+              <div className="mt-6 sm:mt-7 pt-4 sm:pt-5 border-t border-[#173A46]/15 flex flex-wrap items-center gap-2 font-sans text-[8px] uppercase tracking-[0.16em] text-[#244B57] font-medium font-medium">
                 <span>STRATEGY</span>
                 <span aria-hidden="true" className="opacity-40">
                   ·

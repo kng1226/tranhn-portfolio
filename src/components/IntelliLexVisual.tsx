@@ -144,7 +144,7 @@ export const IntelliLexVisual: React.FC<IntelliLexVisualProps> = ({
               isHovered ? 'w-10 bg-[#173A46]/60' : 'w-7'
             }`}
           />
-          <span className="font-sans text-[8px] uppercase tracking-[0.25em] text-[#173A46]/45 my-1">
+          <span className="font-sans text-[8px] uppercase tracking-[0.25em] text-[#244B57] font-medium my-1">
             AI · LEX
           </span>
           <div
@@ -164,7 +164,7 @@ export const IntelliLexVisual: React.FC<IntelliLexVisualProps> = ({
             d
           </span>
           {/* Subtle ghost mirror letter b behind */}
-          <span className="absolute inset-0 font-serif italic text-[64px] lg:text-[72px] text-[#173A46]/15 font-normal leading-none inline-block select-none -translate-x-1.5 pointer-events-none scale-x-[-1]">
+          <span className="absolute inset-0 font-serif italic text-[64px] lg:text-[72px] text-[#244B57] font-medium font-normal leading-none inline-block select-none -translate-x-1.5 pointer-events-none scale-x-[-1]">
             d
           </span>
         </div>

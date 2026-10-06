@@ -61,7 +61,7 @@ export const HeroContent: React.FC<HeroContentProps> = ({ scrollProgress, onFoll
         }}
         className="flex items-center gap-3 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
       >
-        <span className="font-sans text-[9px] uppercase tracking-[0.22em] font-medium text-[#F3E7D0]/60">
+        <span className="font-sans text-[9px] uppercase tracking-[0.22em] font-medium text-[#F3E7D0]">
           PROLOGUE
         </span>
         <span aria-hidden="true" className="w-12 h-px bg-[#F3E7D0]/25" />
@@ -103,7 +103,7 @@ export const HeroContent: React.FC<HeroContentProps> = ({ scrollProgress, onFoll
         }}
         className="mt-8 transition-all duration-800 ease-[cubic-bezier(0.22,1,0.36,1)]"
       >
-        <p className="font-serif text-[16px] lg:text-[17px] leading-[1.45] text-[#F3E7D0]/85 max-w-[430px]">
+        <p className="font-serif text-[16px] lg:text-[17px] leading-[1.45] text-[#F3E7D0] max-w-[430px]">
           “Some paths begin with knowing exactly where to go.
           <br className="hidden sm:inline" /> Mine began with learning how to see.”
         </p>
@@ -117,7 +117,7 @@ export const HeroContent: React.FC<HeroContentProps> = ({ scrollProgress, onFoll
         }}
         className="mt-4 transition-all duration-800 ease-[cubic-bezier(0.22,1,0.36,1)]"
       >
-        <p className="font-sans text-[11px] lg:text-[12px] leading-[1.7] text-[#F3E7D0]/60 max-w-[460px]">
+        <p className="font-sans text-[11px] lg:text-[12px] leading-[1.7] text-[#F3E7D0] max-w-[460px]">
           I explore the space between business, technology and design — turning complex problems into systems, experiences and ideas.
         </p>
       </div>
@@ -132,7 +132,7 @@ export const HeroContent: React.FC<HeroContentProps> = ({ scrollProgress, onFoll
         <button
           onClick={onFollowHawk}
           type="button"
-          className="group inline-flex items-center gap-3 font-sans text-[9px] uppercase tracking-[0.20em] text-[#F3E7D0]/55 hover:text-[#F3E7D0]/80 transition-colors duration-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-[#F3E7D0]/40 rounded-sm cursor-pointer"
+          className="group inline-flex items-center gap-3 font-sans text-[9px] uppercase tracking-[0.20em] text-[#F3E7D0] hover:text-[#F3E7D0] transition-colors duration-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-[#F3E7D0]/40 rounded-sm cursor-pointer"
           aria-label="Follow the hawk into the portfolio"
         >
           <span>FOLLOW THE HAWK</span>

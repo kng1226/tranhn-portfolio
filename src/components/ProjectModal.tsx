@@ -82,7 +82,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
           onClick={onClose}
           type="button"
           aria-label="Close project modal"
-          className="absolute right-4 top-4 sm:right-6 sm:top-6 w-10 h-10 rounded-full flex items-center justify-center border border-[#173A46]/15 bg-[#173A46]/5 text-[#173A46]/70 transition-all duration-300 hover:bg-[#173A46]/10 hover:rotate-90 hover:text-[#173A46] focus:outline-none focus-visible:ring-1 focus-visible:ring-[#173A46]/50 cursor-pointer z-30"
+          className="absolute right-4 top-4 sm:right-6 sm:top-6 w-10 h-10 rounded-full flex items-center justify-center border border-[#173A46]/15 bg-[#173A46]/5 text-[#244B57] font-medium transition-all duration-300 hover:bg-[#173A46]/10 hover:rotate-90 hover:text-[#173A46] focus:outline-none focus-visible:ring-1 focus-visible:ring-[#173A46]/50 cursor-pointer z-30"
         >
           <span className="text-[17px] font-sans leading-none" aria-hidden="true">
             ✕
@@ -103,13 +103,13 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                 ) : (
                   <VnDropsVisual cursorX={0} cursorY={0} isHovered={true} />
                 )}
-                <div className="absolute bottom-2.5 right-3 font-sans text-[8px] uppercase tracking-[0.2em] text-[#173A46]/40 pointer-events-none">
+                <div className="absolute bottom-2.5 right-3 font-sans text-[8px] uppercase tracking-[0.2em] text-[#244B57] font-medium pointer-events-none">
                   {isIntelliLex ? 'SPECIMEN · LINGUISTIC MODEL' : 'SPECIMEN · FLOW NETWORK'}
                 </div>
               </div>
 
               {/* Sub-label & Timeline */}
-              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#173A46]/60 block font-medium">
+              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#244B57] font-medium block font-medium">
                 {isIntelliLex ? 'AI FOR DYSLEXIA SUPPORT' : 'AUTOMATIC BLOOD DONATION SYSTEM'}
               </span>
 
@@ -117,7 +117,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                 {isIntelliLex ? 'INTELLILEX' : 'VNDROPS'}
               </h4>
 
-              <div className="mt-2 flex items-center gap-2 font-sans text-[11px] text-[#173A46]/70">
+              <div className="mt-2 flex items-center gap-2 font-sans text-[11px] text-[#244B57] font-medium">
                 <span className="font-medium text-[#173A46]">
                   {isIntelliLex
                     ? 'PROJECT MANAGER · UI/UX DESIGN'
@@ -126,13 +126,13 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                 <span aria-hidden="true" className="opacity-40">
                   ·
                 </span>
-                <span className="text-[#173A46]/55">09/2023 — 01/2024</span>
+                <span className="text-[#244B57] font-medium">09/2023 — 01/2024</span>
               </div>
             </div>
 
             {/* Key Verified Awards / Achievements */}
             <div className="mt-8 pt-6 border-t border-[#173A46]/12">
-              <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#173A46]/45 block mb-3 font-medium">
+              <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#244B57] font-medium block mb-3 font-medium">
                 KEY RECOGNITIONS
               </span>
 
@@ -142,7 +142,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                   <span className="font-serif text-[20px] text-[#173A46] font-normal block leading-tight">
                     TOP 10 GLOBALLY
                   </span>
-                  <span className="font-sans text-[9px] uppercase tracking-[0.16em] text-[#173A46]/65 block mt-1">
+                  <span className="font-sans text-[9px] uppercase tracking-[0.16em] text-[#244B57] font-medium block mt-1">
                     MICROSOFT IMAGINE CUP JUNIOR 2024
                   </span>
                 </div>
@@ -153,7 +153,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                     <span className="font-serif text-[18px] text-[#173A46] font-normal block leading-tight">
                       1ST PLACE
                     </span>
-                    <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#173A46]/65 block mt-0.5">
+                    <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#244B57] font-medium block mt-0.5">
                       NATIONAL SCIENCE AND TECHNOLOGY INNOVATION CONTEST — U-INVENT 5
                     </span>
                   </div>
@@ -162,7 +162,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                     <span className="font-serif text-[18px] text-[#173A46] font-normal block leading-tight">
                       3RD PLACE
                     </span>
-                    <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#173A46]/65 block mt-0.5">
+                    <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#244B57] font-medium block mt-0.5">
                       NATIONAL YOUTH TECHNOLOGY COMPETITION 2023
                     </span>
                   </div>
@@ -177,7 +177,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
           <div className="flex flex-col select-text">
             {/* Header & Core Hook */}
             <div>
-              <span className="font-sans text-[9px] uppercase tracking-[0.22em] text-[#173A46]/50 block font-medium">
+              <span className="font-sans text-[9px] uppercase tracking-[0.22em] text-[#244B57] font-medium block font-medium">
                 PRODUCT INITIATIVE OVERVIEW
               </span>
               <h3
@@ -204,10 +204,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
               /* IntelliLex Pillars */
               <div className="space-y-6">
                 <div>
-                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#173A46]/60 block font-semibold">
+                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#244B57] font-medium block font-semibold">
                     PRODUCT DIRECTION
                   </span>
-                  <p className="mt-1.5 font-sans text-[13px] leading-[1.7] text-[#173A46]/75">
+                  <p className="mt-1.5 font-sans text-[13px] leading-[1.7] text-[#244B57] font-medium">
                     Framed the product roadmap around pediatric cognitive patterns, aligning user
                     needs with feasible technical scopes across machine learning models and
                     interactive reading exercises.
@@ -217,10 +217,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                 <div className="w-full h-px bg-[#173A46]/8" />
 
                 <div>
-                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#173A46]/60 block font-semibold">
+                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#244B57] font-medium block font-semibold">
                     AI-ENABLED LEARNING
                   </span>
-                  <p className="mt-1.5 font-sans text-[13px] leading-[1.7] text-[#173A46]/75">
+                  <p className="mt-1.5 font-sans text-[13px] leading-[1.7] text-[#244B57] font-medium">
                     Guided the integration of assistive speech and visual recognition algorithms,
                     adapting pacing and typeface rendering in real-time according to individualized
                     learning difficulties.
@@ -230,10 +230,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                 <div className="w-full h-px bg-[#173A46]/8" />
 
                 <div>
-                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#173A46]/60 block font-semibold">
+                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#244B57] font-medium block font-semibold">
                     UI / UX
                   </span>
-                  <p className="mt-1.5 font-sans text-[13px] leading-[1.7] text-[#173A46]/75">
+                  <p className="mt-1.5 font-sans text-[13px] leading-[1.7] text-[#244B57] font-medium">
                     Designed an accessible, low-cognitive-load interface utilizing high-legibility
                     open-dyslexic spacing, gentle chromatic contrast, and immediate auditory
                     affirmation loops.
@@ -243,10 +243,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                 <div className="w-full h-px bg-[#173A46]/8" />
 
                 <div>
-                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#173A46]/60 block font-semibold">
+                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#244B57] font-medium block font-semibold">
                     OUTCOME
                   </span>
-                  <p className="mt-1.5 font-sans text-[13px] leading-[1.7] text-[#173A46]/75">
+                  <p className="mt-1.5 font-sans text-[13px] leading-[1.7] text-[#244B57] font-medium">
                     Recognized among the Top 10 projects globally at the Microsoft Imagine Cup
                     Junior 2024, demonstrating technical viability, social empathy, and validated
                     product methodology.
@@ -257,10 +257,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
               /* VnDrops Pillars */
               <div className="space-y-6">
                 <div>
-                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#173A46]/60 block font-semibold">
+                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#244B57] font-medium block font-semibold">
                     RESEARCH
                   </span>
-                  <p className="mt-1.5 font-sans text-[13px] leading-[1.7] text-[#173A46]/75">
+                  <p className="mt-1.5 font-sans text-[13px] leading-[1.7] text-[#244B57] font-medium">
                     Conducted in-depth operational field research into blood bank inventory latency,
                     identifying friction points in manual donor notification, screening validation,
                     and transit logistics.
@@ -270,10 +270,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                 <div className="w-full h-px bg-[#173A46]/8" />
 
                 <div>
-                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#173A46]/60 block font-semibold">
+                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#244B57] font-medium block font-semibold">
                     MATCHING LOGIC
                   </span>
-                  <p className="mt-1.5 font-sans text-[13px] leading-[1.7] text-[#173A46]/75">
+                  <p className="mt-1.5 font-sans text-[13px] leading-[1.7] text-[#244B57] font-medium">
                     Architected rule-based algorithmic matching logic prioritizing rare blood type
                     availability, geographic proximity, and donation intervals to eliminate urgent
                     deficits.
@@ -283,10 +283,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                 <div className="w-full h-px bg-[#173A46]/8" />
 
                 <div>
-                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#173A46]/60 block font-semibold">
+                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#244B57] font-medium block font-semibold">
                     WORKFLOW DESIGN
                   </span>
-                  <p className="mt-1.5 font-sans text-[13px] leading-[1.7] text-[#173A46]/75">
+                  <p className="mt-1.5 font-sans text-[13px] leading-[1.7] text-[#244B57] font-medium">
                     Streamlined administrative verification workflows, connecting automated SMS/app
                     alerts with hospital dispatch teams to ensure high reliability under emergency
                     protocols.
@@ -296,10 +296,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                 <div className="w-full h-px bg-[#173A46]/8" />
 
                 <div>
-                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#173A46]/60 block font-semibold">
+                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#244B57] font-medium block font-semibold">
                     OUTCOME
                   </span>
-                  <p className="mt-1.5 font-sans text-[13px] leading-[1.7] text-[#173A46]/75">
+                  <p className="mt-1.5 font-sans text-[13px] leading-[1.7] text-[#244B57] font-medium">
                     Awarded 1st Place at the National Science and Technology Innovation Contest
                     (U-Invent 5) and 3rd Place at the National Youth Technology Competition 2023.
                   </p>
@@ -308,7 +308,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
             )}
 
             {/* Footer Metadata Tags */}
-            <div className="mt-8 pt-5 border-t border-[#173A46]/15 flex flex-wrap items-center gap-2 font-sans text-[9px] uppercase tracking-[0.16em] text-[#173A46]/55 font-medium">
+            <div className="mt-8 pt-5 border-t border-[#173A46]/15 flex flex-wrap items-center gap-2 font-sans text-[9px] uppercase tracking-[0.16em] text-[#244B57] font-medium font-medium">
               {isIntelliLex ? (
                 <>
                   <span>PRODUCT STRATEGY</span>

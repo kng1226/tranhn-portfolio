@@ -138,7 +138,7 @@ export const VnDropsVisual: React.FC<VnDropsVisualProps> = ({
             {/* Satellite Node */}
             <div className="absolute -top-1.5 -left-1.5 w-3 h-3 rounded-full bg-[#357283]/80 border border-white" />
           </div>
-          <span className="mt-2 font-sans text-[8px] uppercase tracking-[0.2em] text-[#173A46]/55 font-medium">
+          <span className="mt-2 font-sans text-[8px] uppercase tracking-[0.2em] text-[#244B57] font-medium font-medium">
             SUPPLY NODE
           </span>
         </div>
@@ -178,7 +178,7 @@ export const VnDropsVisual: React.FC<VnDropsVisualProps> = ({
             {/* Satellite Node */}
             <div className="absolute -bottom-1.5 -right-1.5 w-3 h-3 rounded-full bg-[#173A46]/70 border border-white" />
           </div>
-          <span className="mt-2 font-sans text-[8px] uppercase tracking-[0.2em] text-[#173A46]/55 font-medium">
+          <span className="mt-2 font-sans text-[8px] uppercase tracking-[0.2em] text-[#244B57] font-medium font-medium">
             DEMAND NODE
           </span>
         </div>

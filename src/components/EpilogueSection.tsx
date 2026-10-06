@@ -106,14 +106,14 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
           >
             {/* Chapter Marker */}
             <div className="flex items-center gap-4 mb-0">
-              <span className="font-serif italic text-[15px] text-[#F3E7D0]/55 leading-none">
+              <span className="font-serif italic text-[15px] text-[#F3E7D0] leading-none">
                 05
               </span>
-              <span className="font-sans text-[10px] uppercase tracking-[0.20em] text-[#F3E7D0]/72 font-medium">
+              <span className="font-sans text-[10px] uppercase tracking-[0.20em] text-[#F3E7D0] font-medium">
                 EPILOGUE
               </span>
               <span className="w-10 h-px bg-[#F3E7D0]/25" />
-              <span className="font-sans text-[10px] uppercase tracking-[0.14em] text-[#F3E7D0]/42">
+              <span className="font-sans text-[10px] uppercase tracking-[0.14em] text-[#F3E7D0]">
                 BACK TO THE OPEN
               </span>
             </div>
@@ -128,13 +128,13 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
 
             {/* Supporting Copy */}
             <div>
-              <p className="max-w-[460px] mt-7 font-sans text-[14px] lg:text-[15px] max-[1279px]:text-[14px] leading-[1.65] text-[#F3E7D0]/78">
+              <p className="max-w-[460px] mt-7 font-sans text-[14px] lg:text-[15px] max-[1279px]:text-[14px] leading-[1.65] text-[#F3E7D0]">
                 A portfolio can only show where I have been so far.
                 <br className="hidden sm:inline" />
                 There is still more to learn, build and make.
               </p>
 
-              <p className="mt-[18px] max-w-[420px] font-sans text-[13px] leading-[1.6] text-[#F3E7D0]/58">
+              <p className="mt-[18px] max-w-[420px] font-sans text-[13px] leading-[1.6] text-[#F3E7D0]">
                 If something here made you curious, I’d be glad to continue the conversation.
               </p>
             </div>
@@ -144,14 +144,14 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
               {/* Identity & Location & Email */}
               <div className="space-y-2">
                 <div>
-                  <span className="font-serif text-[18px] text-[#F3E7D0]/92 block">
+                  <span className="font-serif text-[18px] text-[#F3E7D0] block">
                     NGUYỄN TRÂM ANH
                   </span>
-                  <span className="font-sans text-[10px] uppercase tracking-[0.14em] text-[#F3E7D0]/42 block mt-1">
+                  <span className="font-sans text-[10px] uppercase tracking-[0.14em] text-[#F3E7D0] block mt-1">
                     Hanoi, Vietnam
                   </span>
                 </div>
-                <div className="mt-[10px] space-y-1 font-sans text-[12px] leading-[1.8] text-[#F3E7D0]/70">
+                <div className="mt-[10px] space-y-1 font-sans text-[12px] leading-[1.8] text-[#F3E7D0]">
                   <a
                     href="mailto:tranhn.work@gmail.com"
                     className="block hover:text-[#F3E7D0] transition-colors"
@@ -185,7 +185,7 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
                 <button
                   onClick={handleDownloadCV}
                   type="button"
-                  className="font-sans text-[10px] uppercase tracking-[0.15em] text-[#F3E7D0]/52 hover:text-[#F3E7D0]/85 transition-colors cursor-pointer"
+                  className="font-sans text-[10px] uppercase tracking-[0.15em] text-[#F3E7D0] hover:text-[#F3E7D0] transition-colors cursor-pointer"
                 >
                   DOWNLOAD CV ↓
                 </button>
@@ -194,8 +194,8 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
             </div>
           </div>
 
-            <footer className="relative z-30 mx-auto grid w-full max-w-[1600px] grid-cols-1 gap-4 border-t border-[#F3E7D0]/15 px-[7vw] py-5 font-sans text-[10px] text-[#F3E7D0]/60 sm:grid-cols-3 sm:items-center">
-              <span className="font-serif text-[14px] text-[#F3E7D0]/82">NGUYỄN TRÂM ANH</span>
+            <footer className="relative z-30 mx-auto grid w-full max-w-[1600px] grid-cols-1 gap-4 border-t border-[#F3E7D0]/15 px-[7vw] py-5 font-sans text-[10px] text-[#F3E7D0] sm:grid-cols-3 sm:items-center">
+              <span className="font-serif text-[14px] text-[#F3E7D0]">NGUYỄN TRÂM ANH</span>
               <div className="flex flex-wrap gap-x-5 gap-y-2 sm:justify-center">
                 <a href="mailto:tranhn.work@gmail.com" className="hover:text-[#F3E7D0] transition-colors">
                   tranhn.work@gmail.com
@@ -231,14 +231,14 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
           {/* Mobile Chapter Intro */}
           <div className="space-y-4 relative z-10 w-[88vw] sm:w-[90vw]">
             <div className="flex items-center gap-3">
-            <span className="font-serif italic text-[14px] text-[#F3E7D0]/50 leading-none">
+            <span className="font-serif italic text-[14px] text-[#F3E7D0] leading-none">
                 05
               </span>
-              <span className="font-sans text-[10px] uppercase tracking-[0.20em] text-[#F3E7D0]/72 font-medium">
+              <span className="font-sans text-[10px] uppercase tracking-[0.20em] text-[#F3E7D0] font-medium">
                 EPILOGUE
               </span>
               <span className="w-6 h-px bg-[#F3E7D0]/25" />
-              <span className="font-sans text-[10px] uppercase tracking-[0.14em] text-[#F3E7D0]/42">
+              <span className="font-sans text-[10px] uppercase tracking-[0.14em] text-[#F3E7D0]">
                 BACK TO THE OPEN
               </span>
             </div>
@@ -249,12 +249,12 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
               becomes <span className="italic font-normal">another beginning.</span>
             </h2>
 
-            <p className="font-sans text-[14px] leading-[1.6] text-[#F3E7D0]/76">
+            <p className="font-sans text-[14px] leading-[1.6] text-[#F3E7D0]">
               A portfolio can only show where I have been so far.
               There is still more to learn, build and make.
             </p>
 
-            <p className="font-sans text-[13px] leading-[1.6] text-[#F3E7D0]/56">
+            <p className="font-sans text-[13px] leading-[1.6] text-[#F3E7D0]">
               If something here made you curious, I’d be glad to continue the conversation.
             </p>
           </div>
@@ -262,15 +262,15 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
           {/* Mobile Contact Block */}
           <div className="space-y-5 relative z-10 mt-8">
             <div className="flex flex-col gap-2">
-              <span className="font-serif text-[18px] text-[#F3E7D0]/92 font-medium block">
+              <span className="font-serif text-[18px] text-[#F3E7D0] font-medium block">
                 NGUYỄN TRÂM ANH
               </span>
-              <span className="font-sans text-[10px] uppercase tracking-[0.14em] text-[#F3E7D0]/42 block mt-0.5">
+              <span className="font-sans text-[10px] uppercase tracking-[0.14em] text-[#F3E7D0] block mt-0.5">
                 Hanoi, Vietnam
               </span>
             </div>
 
-            <div className="flex flex-col gap-2 font-sans text-[12px] text-[#F3E7D0]/68 pt-2">
+            <div className="flex flex-col gap-2 font-sans text-[12px] text-[#F3E7D0] pt-2">
               <a
                 href="mailto:tranhn.work@gmail.com"
                 className="hover:text-[#F3E7D0]"
@@ -301,7 +301,7 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
               <button
                 onClick={handleDownloadCV}
                 type="button"
-                className="w-max inline-flex items-center justify-center py-2 font-sans text-[10px] uppercase tracking-[0.15em] text-[#F3E7D0]/52 hover:text-[#F3E7D0]/85 transition-colors"
+                className="w-max inline-flex items-center justify-center py-2 font-sans text-[10px] uppercase tracking-[0.15em] text-[#F3E7D0] hover:text-[#F3E7D0] transition-colors"
               >
                 DOWNLOAD CV ↓
               </button>
@@ -310,7 +310,7 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
 
           {/* Mobile Environmental Poem Frame */}
           <div className="space-y-4 pt-12 relative z-10">
-            <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#F3E7D0]/60 block mb-3">
+            <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#F3E7D0] block mb-3">
               EPILOGUE
             </span>
             <h3 className="font-serif text-[64px] leading-[0.92] text-[#F3E7D0] drop-shadow-sm">
@@ -318,7 +318,7 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
               <br />
               again.
             </h3>
-            <p className="font-sans text-[15px] leading-[1.5] text-[#F3E7D0]/65 mt-6">
+            <p className="font-sans text-[15px] leading-[1.5] text-[#F3E7D0] mt-6">
               Not the same place.
               <br />
               Not quite the same person.
@@ -327,7 +327,7 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
 
           {/* Mobile Final Thank You */}
           <div className="text-center space-y-3 pt-16 relative z-10 mx-auto w-[80vw]">
-            <h4 className="font-serif text-[18px] text-[#F3E7D0]/88 font-normal drop-shadow-sm">
+            <h4 className="font-serif text-[18px] text-[#F3E7D0] font-normal drop-shadow-sm">
               THANK YOU FOR WANDERING WITH ME.
             </h4>
           </div>
@@ -335,48 +335,48 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
           {/* Mobile Clean Footer Stack */}
           <footer className="pt-8 border-t border-[#F3E7D0]/10 space-y-5 text-left font-sans relative z-10 px-[20px] pb-[28px] flex flex-col gap-[20px]">
             <div>
-              <span className="font-serif text-[16px] text-[#F3E7D0]/82 block leading-tight">
+              <span className="font-serif text-[16px] text-[#F3E7D0] block leading-tight">
                 NGUYỄN TRÂM ANH
               </span>
-              <span className="mt-1 text-[8px] uppercase tracking-[0.16em] text-[#F3E7D0]/38 block">
+              <span className="mt-1 text-[8px] uppercase tracking-[0.16em] text-[#F3E7D0] block">
                 Business · Technology · Design
               </span>
             </div>
 
             <div>
-              <span className="font-sans text-[8px] uppercase tracking-[0.18em] text-[#F3E7D0]/30 block leading-none">
+              <span className="font-sans text-[8px] uppercase tracking-[0.18em] text-[#F3E7D0] block leading-none">
                 EMAIL
               </span>
               <a
                 href="mailto:tranhn.work@gmail.com"
-                className="font-sans text-[10px] text-[#F3E7D0]/58 hover:text-[#F3E7D0] transition-colors mt-0.5 block"
+                className="font-sans text-[10px] text-[#F3E7D0] hover:text-[#F3E7D0] transition-colors mt-0.5 block"
               >
                 tranhn.work@gmail.com
               </a>
             </div>
 
             <div>
-              <span className="font-sans text-[8px] uppercase tracking-[0.18em] text-[#F3E7D0]/30 block leading-none">
+              <span className="font-sans text-[8px] uppercase tracking-[0.18em] text-[#F3E7D0] block leading-none">
                 LINKEDIN
               </span>
               <a
                 href="https://linkedin.com/in/tranhng"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-sans text-[10px] text-[#F3E7D0]/58 hover:text-[#F3E7D0] transition-colors mt-0.5 block"
+                className="font-sans text-[10px] text-[#F3E7D0] hover:text-[#F3E7D0] transition-colors mt-0.5 block"
               >
                 linkedin.com/in/tranhng
               </a>
             </div>
 
             <div className="pt-3 flex flex-col items-start gap-4 border-t border-[#F3E7D0]/10">
-              <span className="font-sans text-[8px] uppercase tracking-[0.18em] text-[#F3E7D0]/30 block leading-none">
+              <span className="font-sans text-[8px] uppercase tracking-[0.18em] text-[#F3E7D0] block leading-none">
                 PORTFOLIO — 2026
               </span>
               <button
                 onClick={handleScrollToTop}
                 type="button"
-                className="text-[10px] uppercase tracking-[0.16em] text-[#F3E7D0]/58 hover:text-[#F3E7D0] font-medium transition-colors"
+                className="text-[10px] uppercase tracking-[0.16em] text-[#F3E7D0] hover:text-[#F3E7D0] font-medium transition-colors"
               >
                 RETURN TO TOP ↑
               </button>

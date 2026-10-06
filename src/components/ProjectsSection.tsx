@@ -97,15 +97,15 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onModalChange 
       {/* ============================================================ */}
       <div className="flex flex-col gap-1 z-10">
         <div className="flex items-center gap-3">
-          <span className="font-serif italic text-[16px] text-[#173A46]/45 leading-none">
+          <span className="font-serif italic text-[16px] text-[#244B57] font-medium leading-none">
             03
           </span>
-          <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#173A46]/60 font-medium">
+          <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#244B57] font-medium font-medium">
             PROJECTS
           </span>
         </div>
         <div className="w-12 h-px bg-[#173A46]/20 my-0.5" aria-hidden="true" />
-        <span className="font-sans text-[10px] uppercase tracking-[0.16em] text-[#173A46]/40">
+        <span className="font-sans text-[10px] uppercase tracking-[0.16em] text-[#244B57] font-medium">
           FROM QUESTIONS TO THINGS THAT WORK
         </span>
       </div>
@@ -114,7 +114,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onModalChange 
       {/* 2. MAIN SECTION TITLE                                        */}
       {/* ============================================================ */}
       <div className="mt-6 sm:mt-8 lg:mt-5 max-w-xl z-10">
-        <span className="font-sans text-[10px] uppercase tracking-[0.22em] font-medium text-[#173A46]/50 block mb-2">
+        <span className="font-sans text-[10px] uppercase tracking-[0.22em] font-medium text-[#244B57] font-medium block mb-2">
           CHAPTER III — PROJECTS
         </span>
 
@@ -124,7 +124,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onModalChange 
           with a <span className="italic font-normal">question.</span>
         </h2>
 
-        <p className="mt-3.5 max-w-[480px] font-sans text-[14px] lg:text-[15px] leading-[1.65] text-[#173A46]/68">
+        <p className="mt-3.5 max-w-[480px] font-sans text-[14px] lg:text-[15px] leading-[1.65] text-[#244B57] font-medium">
           Two projects where research, product thinking and design became working solutions.
         </p>
       </div>
@@ -134,10 +134,10 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onModalChange 
       {/* ============================================================ */}
       <div className="w-full flex justify-center mt-8 sm:mt-10 mb-6 sm:mb-8 lg:mb-10 z-10">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/35 backdrop-blur-sm border border-[#173A46]/10 animate-[pulse_3.5s_ease-in-out_infinite]">
-          <span className="font-sans text-[11px] lg:text-[12px] uppercase tracking-[0.14em] font-medium text-[#173A46]/65 text-center">
+          <span className="font-sans text-[11px] lg:text-[12px] uppercase tracking-[0.14em] font-medium text-[#244B57] font-medium text-center">
             MOVE YOUR CURSOR ACROSS A PROJECT — CLICK TO OPEN THE FULL STORY
           </span>
-          <span className="text-[12px] text-[#173A46]/60 font-sans" aria-hidden="true">
+          <span className="text-[12px] text-[#244B57] font-medium font-sans" aria-hidden="true">
             ↗
           </span>
         </div>
@@ -201,10 +201,10 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onModalChange 
           {/* Bottom Information Area (58-100% of card height) */}
           <div className="relative h-[42%] w-full flex flex-col justify-end pt-2">
             <div className="flex items-center justify-between">
-              <span className="font-sans text-[10px] uppercase tracking-[0.14em] text-[#173A46]/60 font-semibold">
+              <span className="font-sans text-[10px] uppercase tracking-[0.14em] text-[#244B57] font-medium font-semibold">
                 AI FOR DYSLEXIA SUPPORT
               </span>
-              <span className="font-sans text-[9px] uppercase tracking-[0.14em] text-[#173A46]/45">
+              <span className="font-sans text-[9px] uppercase tracking-[0.14em] text-[#244B57] font-medium">
                 09/2023 — 01/2024
               </span>
             </div>
@@ -220,11 +220,11 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onModalChange 
               </span>
             </div>
 
-            <div className="mt-1 flex items-center justify-between text-[10px] font-sans text-[#173A46]/70">
+            <div className="mt-1 flex items-center justify-between text-[10px] font-sans text-[#244B57] font-medium">
               <span className="truncate max-w-[280px]">
                 PROJECT MANAGER · UI/UX DESIGN
               </span>
-              <span className="font-medium text-[#173A46]/80 text-[9px] uppercase tracking-wider">
+              <span className="font-medium text-[#244B57] font-medium text-[9px] uppercase tracking-wider">
                 TOP 10 GLOBALLY
               </span>
             </div>
@@ -273,10 +273,10 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onModalChange 
           {/* Bottom Information Area (58-100% of card height) */}
           <div className="relative h-[42%] w-full flex flex-col justify-end pt-2">
             <div className="flex items-center justify-between">
-              <span className="font-sans text-[10px] uppercase tracking-[0.14em] text-[#173A46]/60 font-semibold">
+              <span className="font-sans text-[10px] uppercase tracking-[0.14em] text-[#244B57] font-medium font-semibold">
                 AUTOMATIC BLOOD DONATION SYSTEM
               </span>
-              <span className="font-sans text-[9px] uppercase tracking-[0.14em] text-[#173A46]/45">
+              <span className="font-sans text-[9px] uppercase tracking-[0.14em] text-[#244B57] font-medium">
                 09/2023 — 01/2024
               </span>
             </div>
@@ -292,11 +292,11 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onModalChange 
               </span>
             </div>
 
-            <div className="mt-1 flex items-center justify-between text-[10px] font-sans text-[#173A46]/70">
+            <div className="mt-1 flex items-center justify-between text-[10px] font-sans text-[#244B57] font-medium">
               <span className="truncate max-w-[280px]">
                 PROJECT MANAGER · UI/UX · R&D
               </span>
-              <span className="font-medium text-[#173A46]/80 text-[9px] uppercase tracking-wider">
+              <span className="font-medium text-[#244B57] font-medium text-[9px] uppercase tracking-wider">
                 1ST PLACE U-INVENT 5
               </span>
             </div>
@@ -307,9 +307,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onModalChange 
       {/* ============================================================ */}
       {/* 5. BOTTOM BREATHING / MICROCOPY                              */}
       {/* ============================================================ */}
-      <div className="w-full flex items-center justify-between text-[10px] font-sans text-[#173A46]/45 uppercase tracking-[0.18em] pt-4 sm:pt-2 mt-8 lg:mt-0 z-10 border-t border-[#173A46]/10">
+      <div className="w-full flex items-center justify-between text-[10px] font-sans text-[#244B57] font-medium uppercase tracking-[0.18em] pt-4 sm:pt-2 mt-8 lg:mt-0 z-10 border-t border-[#173A46]/10">
         <span>RESEARCH · PRODUCT THINKING · PROTOTYPING</span>
-        <span className="hidden sm:inline italic font-serif text-[12px] text-[#173A46]/40 lowercase">
+        <span className="hidden sm:inline italic font-serif text-[12px] text-[#244B57] font-medium lowercase">
           two specimens from the field
         </span>
         <span>MICROSOFT CUP · U-INVENT 5</span>

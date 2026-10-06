@@ -39,15 +39,15 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onModalCha
       {/* ============================================================ */}
       <div className="flex flex-col gap-1 transition-all duration-800 ease-[cubic-bezier(0.22,1,0.36,1)] z-10">
         <div className="flex items-center gap-3">
-          <span className="font-serif italic text-[16px] text-[#173A46]/45 leading-none">
+          <span className="font-serif italic text-[16px] text-[#244B57] font-medium leading-none">
             02
           </span>
-          <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#173A46]/60 font-medium">
+          <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#244B57] font-medium font-medium">
             EXPERIENCE & LEADERSHIP
           </span>
         </div>
         <div className="w-12 h-px bg-[#173A46]/20 my-0.5" aria-hidden="true" />
-        <span className="font-sans text-[10px] uppercase tracking-[0.18em] text-[#173A46]/40">
+        <span className="font-sans text-[10px] uppercase tracking-[0.18em] text-[#244B57] font-medium">
           FROM BUILDING SYSTEMS TO LEADING PEOPLE
         </span>
       </div>
@@ -56,7 +56,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onModalCha
       {/* 2. MAIN HEADING & INTRO HOOK                                 */}
       {/* ============================================================ */}
       <div className="mt-6 sm:mt-8 lg:mt-6 max-w-xl z-10">
-        <span className="font-sans text-[10px] uppercase tracking-[0.22em] font-medium text-[#173A46]/50 block mb-2">
+        <span className="font-sans text-[10px] uppercase tracking-[0.22em] font-medium text-[#244B57] font-medium block mb-2">
           CHAPTER II
         </span>
 
@@ -66,7 +66,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onModalCha
           become <span className="italic font-normal">action.</span>
         </h2>
 
-        <p className="mt-3.5 max-w-[500px] font-sans text-[14px] lg:text-[15px] leading-[1.65] text-[#173A46]/68">
+        <p className="mt-3.5 max-w-[500px] font-sans text-[14px] lg:text-[15px] leading-[1.65] text-[#244B57] font-medium">
           My experience has developed in two directions — building systems that work, and helping
           people move toward a shared direction.
         </p>
@@ -77,10 +77,10 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onModalCha
       {/* ============================================================ */}
       <div className="w-full flex justify-center mt-8 sm:mt-10 mb-6 sm:mb-8 lg:mb-10 z-10">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/35 backdrop-blur-sm border border-[#173A46]/10 animate-[pulse_3.5s_ease-in-out_infinite]">
-          <span className="font-sans text-[11px] lg:text-[12px] uppercase tracking-[0.14em] font-medium text-[#173A46]/65 text-center">
+          <span className="font-sans text-[11px] lg:text-[12px] uppercase tracking-[0.14em] font-medium text-[#244B57] font-medium text-center">
             CLICK A LOGO TO EXPLORE THE FULL STORY
           </span>
-          <span className="text-[12px] text-[#173A46]/60 font-sans" aria-hidden="true">
+          <span className="text-[12px] text-[#244B57] font-medium font-sans" aria-hidden="true">
             ⊕
           </span>
         </div>
@@ -113,10 +113,10 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onModalCha
           {/* Bottom Information Area (58-100% of card height) */}
           <div className="relative h-[42%] w-full flex flex-col justify-end pt-2">
             <div className="flex items-center justify-between">
-              <span className="font-sans text-[10px] uppercase tracking-[0.14em] text-[#173A46]/60 font-semibold">
+              <span className="font-sans text-[10px] uppercase tracking-[0.14em] text-[#244B57] font-medium font-semibold">
                 PROFESSIONAL EXPERIENCE
               </span>
-              <span className="font-sans text-[9px] uppercase tracking-[0.14em] text-[#173A46]/45">
+              <span className="font-sans text-[9px] uppercase tracking-[0.14em] text-[#244B57] font-medium">
                 2026 — PRESENT
               </span>
             </div>
@@ -132,11 +132,11 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onModalCha
               </span>
             </div>
 
-            <div className="mt-1 flex items-center justify-between text-[10px] font-sans text-[#173A46]/70">
+            <div className="mt-1 flex items-center justify-between text-[10px] font-sans text-[#244B57] font-medium">
               <span className="truncate max-w-[280px]">
                 IT BUSINESS ANALYST INTERN
               </span>
-              <span className="font-medium text-[#173A46]/80 text-[9px] uppercase tracking-wider">
+              <span className="font-medium text-[#244B57] font-medium text-[9px] uppercase tracking-wider">
                 SYSTEMS · AUTOMATION
               </span>
             </div>
@@ -168,10 +168,10 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onModalCha
           {/* Bottom Information Area (58-100% of card height) */}
           <div className="relative h-[42%] w-full flex flex-col justify-end pt-2">
             <div className="flex items-center justify-between">
-              <span className="font-sans text-[10px] uppercase tracking-[0.14em] text-[#173A46]/60 font-semibold">
+              <span className="font-sans text-[10px] uppercase tracking-[0.14em] text-[#244B57] font-medium font-semibold">
                 LEADERSHIP EXPERIENCE
               </span>
-              <span className="font-sans text-[9px] uppercase tracking-[0.14em] text-[#173A46]/45">
+              <span className="font-sans text-[9px] uppercase tracking-[0.14em] text-[#244B57] font-medium">
                 2024 — PRESENT
               </span>
             </div>
@@ -187,11 +187,11 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onModalCha
               </span>
             </div>
 
-            <div className="mt-1 flex items-center justify-between text-[10px] font-sans text-[#173A46]/70">
+            <div className="mt-1 flex items-center justify-between text-[10px] font-sans text-[#244B57] font-medium">
               <span className="truncate max-w-[280px]">
                 HEAD OF TEC GO DEPARTMENT
               </span>
-              <span className="font-medium text-[#173A46]/80 text-[9px] uppercase tracking-wider">
+              <span className="font-medium text-[#244B57] font-medium text-[9px] uppercase tracking-wider">
                 STRATEGY · EXECUTION
               </span>
             </div>
@@ -202,9 +202,9 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onModalCha
       {/* ============================================================ */}
       {/* 5. BOTTOM SECTION MICROCOPY                                  */}
       {/* ============================================================ */}
-      <div className="w-full flex items-center justify-between text-[10px] font-sans text-[#173A46]/45 uppercase tracking-[0.18em] pt-4 sm:pt-2 mt-8 lg:mt-0 z-10 border-t border-[#173A46]/10">
+      <div className="w-full flex items-center justify-between text-[10px] font-sans text-[#244B57] font-medium uppercase tracking-[0.18em] pt-4 sm:pt-2 mt-8 lg:mt-0 z-10 border-t border-[#173A46]/10">
         <span>FPT TELECOM</span>
-        <span className="italic font-serif text-[12px] text-[#173A46]/40 lowercase">
+        <span className="italic font-serif text-[12px] text-[#244B57] font-medium lowercase">
           different contexts. the same instinct to make things move.
         </span>
         <span>FOREIGN TRADE UNIVERSITY</span>

@@ -63,7 +63,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
         {/* Top bar with close button */}
         <div className="flex items-center justify-between pb-6 border-b border-[#F3E7D0]/10">
           <div>
-            <span className="font-sans text-[8px] uppercase tracking-[0.2em] text-[#F3E7D0]/50 block">
+            <span className="font-sans text-[8px] uppercase tracking-[0.2em] text-[#F3E7D0] block">
               COMMUNICATION
             </span>
             <h3 id="contact-heading" className="font-serif text-2xl text-[#F3E7D0] mt-1 font-normal">
@@ -73,7 +73,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
           <button
             onClick={onClose}
             type="button"
-            className="w-8 h-8 rounded-full border border-[#F3E7D0]/20 flex items-center justify-center text-[#F3E7D0]/60 hover:text-[#F3E7D0] hover:bg-[#F3E7D0]/10 transition-all focus:outline-none focus-visible:ring-1 focus-visible:ring-[#F3E7D0]/60 cursor-pointer"
+            className="w-8 h-8 rounded-full border border-[#F3E7D0]/20 flex items-center justify-center text-[#F3E7D0] hover:text-[#F3E7D0] hover:bg-[#F3E7D0]/10 transition-all focus:outline-none focus-visible:ring-1 focus-visible:ring-[#F3E7D0]/60 cursor-pointer"
             aria-label="Close contact dialog"
           >
             ✕
@@ -83,7 +83,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
         {submitted ? (
           <div className="py-12 text-center">
             <span className="font-serif text-2xl text-[#F3E7D0] block mb-2">Message Dispatched</span>
-            <p className="font-sans text-xs text-[#F3E7D0]/60 max-w-xs mx-auto">
+            <p className="font-sans text-xs text-[#F3E7D0] max-w-xs mx-auto">
               Thank you for reaching out. Trâm Anh will respond promptly.
             </p>
           </div>
@@ -92,12 +92,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             {/* Quick Copy Contact Line */}
             <div className="mt-6 flex items-center justify-between p-3.5 rounded-lg border border-[#F3E7D0]/15 bg-white/5">
               <div>
-                <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#F3E7D0]/40 block">
+                <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#F3E7D0] block">
                   PRIMARY CORRESPONDENCE
                 </span>
                 <a
                   href="mailto:tranhn.work@gmail.com"
-                  className="font-sans text-xs text-[#F3E7D0]/90 tracking-wide font-medium hover:text-[#F3E7D0] hover:underline transition-colors"
+                  className="font-sans text-xs text-[#F3E7D0] tracking-wide font-medium hover:text-[#F3E7D0] hover:underline transition-colors"
                 >
                   tranhn.work@gmail.com
                 </a>
@@ -114,7 +114,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             {/* Note form */}
             <form onSubmit={handleSubmit} className="mt-6 space-y-4">
               <div>
-                <label className="block font-sans text-[9px] uppercase tracking-[0.18em] text-[#F3E7D0]/60 mb-1.5">
+                <label className="block font-sans text-[9px] uppercase tracking-[0.18em] text-[#F3E7D0] mb-1.5">
                   Your Name
                 </label>
                 <input
@@ -128,7 +128,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               </div>
 
               <div>
-                <label className="block font-sans text-[9px] uppercase tracking-[0.18em] text-[#F3E7D0]/60 mb-1.5">
+                <label className="block font-sans text-[9px] uppercase tracking-[0.18em] text-[#F3E7D0] mb-1.5">
                   Your Email
                 </label>
                 <input
@@ -142,7 +142,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               </div>
 
               <div>
-                <label className="block font-sans text-[9px] uppercase tracking-[0.18em] text-[#F3E7D0]/60 mb-1.5">
+                <label className="block font-sans text-[9px] uppercase tracking-[0.18em] text-[#F3E7D0] mb-1.5">
                   Topic & Context
                 </label>
                 <textarea
@@ -159,7 +159,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-4 py-2 text-[10px] uppercase font-sans tracking-[0.16em] text-[#F3E7D0]/60 hover:text-[#F3E7D0] transition-colors cursor-pointer"
+                  className="px-4 py-2 text-[10px] uppercase font-sans tracking-[0.16em] text-[#F3E7D0] hover:text-[#F3E7D0] transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>

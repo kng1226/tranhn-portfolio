@@ -81,7 +81,7 @@ export const DesignModal: React.FC<DesignModalProps> = ({ item, onClose, trigger
           onClick={onClose}
           type="button"
           aria-label="Close design modal"
-          className="absolute right-4 top-4 sm:right-6 sm:top-6 w-10 h-10 rounded-full flex items-center justify-center border border-[#173A46]/15 bg-[#173A46]/5 text-[#173A46]/70 transition-all duration-300 hover:bg-[#173A46]/10 hover:rotate-90 hover:text-[#173A46] focus:outline-none focus-visible:ring-1 focus-visible:ring-[#173A46]/50 cursor-pointer z-30"
+          className="absolute right-4 top-4 sm:right-6 sm:top-6 w-10 h-10 rounded-full flex items-center justify-center border border-[#173A46]/15 bg-[#173A46]/5 text-[#244B57] font-medium transition-all duration-300 hover:bg-[#173A46]/10 hover:rotate-90 hover:text-[#173A46] focus:outline-none focus-visible:ring-1 focus-visible:ring-[#173A46]/50 cursor-pointer z-30"
         >
           <span className="text-[17px] font-sans leading-none" aria-hidden="true">
             ✕
@@ -93,7 +93,7 @@ export const DesignModal: React.FC<DesignModalProps> = ({ item, onClose, trigger
           <div className="flex flex-col gap-6">
             <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#173A46]/12 pb-4 pr-12">
               <div>
-                <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#173A46]/55 font-medium">
+                <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#244B57] font-medium font-medium">
                   MOTION & VIDEO EDITING
                 </span>
                 <h3
@@ -103,7 +103,7 @@ export const DesignModal: React.FC<DesignModalProps> = ({ item, onClose, trigger
                   {item.title}
                 </h3>
               </div>
-              <div className="flex items-center gap-2 font-sans text-[11px] text-[#173A46]/70">
+              <div className="flex items-center gap-2 font-sans text-[11px] text-[#244B57] font-medium">
                 <span>{item.role || 'VIDEO EDITOR & MOTION DESIGNER'}</span>
                 {item.year && (
                   <>
@@ -120,7 +120,7 @@ export const DesignModal: React.FC<DesignModalProps> = ({ item, onClose, trigger
             />
 
             {item.context && (
-              <p className="font-sans text-[13px] sm:text-[14px] leading-[1.7] text-[#173A46]/80 max-w-2xl">
+              <p className="font-sans text-[13px] sm:text-[14px] leading-[1.7] text-[#244B57] font-medium max-w-2xl">
                 {item.context}
               </p>
             )}
@@ -136,7 +136,7 @@ export const DesignModal: React.FC<DesignModalProps> = ({ item, onClose, trigger
             {/* Design Story Column */}
             <div className="flex flex-col justify-between">
               <div>
-                <span className="font-sans text-[9px] uppercase tracking-[0.22em] text-[#173A46]/50 block font-medium">
+                <span className="font-sans text-[9px] uppercase tracking-[0.22em] text-[#244B57] font-medium block font-medium">
                   {item.category} · {item.typeLabel}
                 </span>
 
@@ -148,21 +148,21 @@ export const DesignModal: React.FC<DesignModalProps> = ({ item, onClose, trigger
                 </h3>
 
                 {item.role && (
-                  <div className="mt-2 font-sans text-[11px] uppercase tracking-[0.14em] text-[#173A46]/70 font-medium">
+                  <div className="mt-2 font-sans text-[11px] uppercase tracking-[0.14em] text-[#244B57] font-medium font-medium">
                     {item.role}
                   </div>
                 )}
 
                 <div className="w-full h-px bg-[#173A46]/10 my-6" />
 
-                <p className="font-sans text-[13px] sm:text-[14px] leading-[1.75] text-[#173A46]/80">
+                <p className="font-sans text-[13px] sm:text-[14px] leading-[1.75] text-[#244B57] font-medium">
                   {item.context ||
                     'Exploration across visual hierarchy, typography, form, and tactile spatial rhythm. Built with deliberate attention to spatial weight and optical balance.'}
                 </p>
               </div>
 
               {/* Tools & Provenance */}
-              <div className="mt-8 pt-6 border-t border-[#173A46]/12 flex flex-wrap items-center gap-2 font-sans text-[9px] uppercase tracking-[0.16em] text-[#173A46]/55">
+              <div className="mt-8 pt-6 border-t border-[#173A46]/12 flex flex-wrap items-center gap-2 font-sans text-[9px] uppercase tracking-[0.16em] text-[#244B57] font-medium">
                 <span>{item.tools || 'FIGMA · BLENDER · AFTER EFFECTS · ILLUSTRATOR'}</span>
                 <span>·</span>
                 <span>ORIGINAL WORK</span>

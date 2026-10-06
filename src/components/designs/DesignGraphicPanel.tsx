@@ -250,10 +250,10 @@ export const DesignGraphicPanel: React.FC<DesignGraphicPanelProps> = ({
       {/* Category Heading & Description (~24% of panel) */}
       <div className="w-full lg:w-[24vw] shrink-0 z-20 mb-8 lg:mb-0">
         <div className="flex items-center gap-3 mb-2">
-          <span className="font-serif italic text-[16px] text-[#173A46]/45 leading-none">
+          <span className="font-serif italic text-[16px] text-[#244B57] font-medium leading-none">
             03
           </span>
-          <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#173A46]/60 font-medium">
+          <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#244B57] font-medium font-medium">
             GRAPHIC & ILLUSTRATION
           </span>
         </div>
@@ -264,11 +264,11 @@ export const DesignGraphicPanel: React.FC<DesignGraphicPanelProps> = ({
           tension & <span className="italic font-normal">paper.</span>
         </h3>
 
-        <p className="mt-4 max-w-[340px] font-sans text-[13px] lg:text-[14px] leading-[1.65] text-[#173A46]/68">
+        <p className="mt-4 max-w-[340px] font-sans text-[13px] lg:text-[14px] leading-[1.65] text-[#244B57] font-medium">
           Editorial posters, branding systems, vector illustrations, and event key visuals scattered like working proofs across a printmaker’s table.
         </p>
 
-        <div className="mt-6 flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.16em] text-[#173A46]/45">
+        <div className="mt-6 flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.16em] text-[#244B57] font-medium">
           <span className="w-1.5 h-1.5 rounded-full bg-[#173A46]/40" />
           <span>EDITORIAL · POSTERS · BRAND IDENTITY · ILLUSTRATION</span>
         </div>
@@ -298,10 +298,10 @@ export const DesignGraphicPanel: React.FC<DesignGraphicPanelProps> = ({
             >
               {/* Poster Top Bar */}
               <div className="flex items-center justify-between border-b border-black/5 pb-1 px-1 shrink-0">
-                <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#173A46]/70 font-semibold truncate max-w-[120px]">
+                <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#244B57] font-medium font-semibold truncate max-w-[120px]">
                   {piece.title}
                 </span>
-                <span className="font-sans text-[7px] uppercase tracking-[0.14em] text-[#173A46]/40">
+                <span className="font-sans text-[7px] uppercase tracking-[0.14em] text-[#244B57] font-medium">
                   {piece.typeLabel.split(' ')[0]}
                 </span>
               </div>
@@ -317,7 +317,7 @@ export const DesignGraphicPanel: React.FC<DesignGraphicPanelProps> = ({
 
               {/* Poster Footer with Hover Prompt */}
               <div className="flex items-center justify-between border-t border-black/5 pt-1 px-1 shrink-0">
-                <span className="font-sans text-[7.5px] uppercase tracking-[0.14em] text-[#173A46]/50 truncate max-w-[110px]">
+                <span className="font-sans text-[7.5px] uppercase tracking-[0.14em] text-[#244B57] font-medium truncate max-w-[110px]">
                   {piece.typeLabel}
                 </span>
                 <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#173A46] font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">

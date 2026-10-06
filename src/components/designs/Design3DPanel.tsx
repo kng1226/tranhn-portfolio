@@ -87,10 +87,10 @@ export const Design3DPanel: React.FC<Design3DPanelProps> = ({ onSelectItem, redu
       {/* ============================================================ */}
       <div className="w-full lg:w-[28vw] shrink-0 z-20 mb-8 lg:mb-0">
         <div className="flex items-center gap-3 mb-2">
-          <span className="font-serif italic text-[16px] text-[#173A46]/45 leading-none">
+          <span className="font-serif italic text-[16px] text-[#244B57] font-medium leading-none">
             01
           </span>
-          <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#173A46]/60 font-medium">
+          <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#244B57] font-medium font-medium">
             THREE DIMENSIONS
           </span>
         </div>
@@ -101,11 +101,11 @@ export const Design3DPanel: React.FC<Design3DPanelProps> = ({ onSelectItem, redu
           in <span className="italic font-normal">volume.</span>
         </h3>
 
-        <p className="mt-4 max-w-[340px] font-sans text-[13px] lg:text-[14px] leading-[1.65] text-[#173A46]/68">
+        <p className="mt-4 max-w-[340px] font-sans text-[13px] lg:text-[14px] leading-[1.65] text-[#244B57] font-medium">
           Exploring form, space, material, and directional light beyond the flat plane.
         </p>
 
-        <div className="mt-6 flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.16em] text-[#173A46]/45">
+        <div className="mt-6 flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.16em] text-[#244B57] font-medium">
           <span className="w-1.5 h-1.5 rounded-full bg-[#173A46]/40" />
           <span>FORM · REFLECTION · LIGHT · SHADOW</span>
         </div>
@@ -173,10 +173,10 @@ export const Design3DPanel: React.FC<Design3DPanelProps> = ({ onSelectItem, redu
             <ArtworkRenderer id="final-10" isThumbnail className="w-full h-full" />
           </div>
           <div className="mt-1 flex items-center justify-between px-1">
-            <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#173A46]/70 truncate font-medium">
+            <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#244B57] font-medium truncate font-medium">
               final 10
             </span>
-            <span className="text-[9px] text-[#173A46]/50 group-hover:translate-x-0.5 transition-transform">↗</span>
+            <span className="text-[9px] text-[#244B57] font-medium group-hover:translate-x-0.5 transition-transform">↗</span>
           </div>
         </button>
 
@@ -196,10 +196,10 @@ export const Design3DPanel: React.FC<Design3DPanelProps> = ({ onSelectItem, redu
             <ArtworkRenderer id="chainx" isThumbnail className="w-full h-full" />
           </div>
           <div className="mt-1 flex items-center justify-between px-1">
-            <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#173A46]/70 truncate font-medium">
+            <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#244B57] font-medium truncate font-medium">
               ChainX
             </span>
-            <span className="text-[9px] text-[#173A46]/50 group-hover:translate-x-0.5 transition-transform">↗</span>
+            <span className="text-[9px] text-[#244B57] font-medium group-hover:translate-x-0.5 transition-transform">↗</span>
           </div>
         </button>
       </div>

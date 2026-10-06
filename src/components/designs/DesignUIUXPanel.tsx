@@ -117,10 +117,10 @@ export const DesignUIUXPanel: React.FC<DesignUIUXPanelProps> = ({ onSelectItem }
       {/* Category Heading & Description (~25% of panel) */}
       <div className="w-full lg:w-[25vw] shrink-0 z-20 mb-8 lg:mb-0">
         <div className="flex items-center gap-3 mb-2">
-          <span className="font-serif italic text-[16px] text-[#173A46]/45 leading-none">
+          <span className="font-serif italic text-[16px] text-[#244B57] font-medium leading-none">
             02
           </span>
-          <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#173A46]/60 font-medium">
+          <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#244B57] font-medium font-medium">
             DIGITAL INTERFACES
           </span>
         </div>
@@ -131,11 +131,11 @@ export const DesignUIUXPanel: React.FC<DesignUIUXPanelProps> = ({ onSelectItem }
           as a <span className="italic font-normal">dialogue.</span>
         </h3>
 
-        <p className="mt-4 max-w-[340px] font-sans text-[13px] lg:text-[14px] leading-[1.65] text-[#173A46]/68">
+        <p className="mt-4 max-w-[340px] font-sans text-[13px] lg:text-[14px] leading-[1.65] text-[#244B57] font-medium">
           Layered software surfaces built around clarity, low friction, accessibility, and responsive human workflows.
         </p>
 
-        <div className="mt-6 flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.16em] text-[#173A46]/45">
+        <div className="mt-6 flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.16em] text-[#244B57] font-medium">
           <span className="w-1.5 h-1.5 rounded-full bg-[#173A46]/40" />
           <span>ACCESSIBILITY · INFORMATION ARCHITECTURE · DESIGN SYSTEMS</span>
         </div>
@@ -170,11 +170,11 @@ export const DesignUIUXPanel: React.FC<DesignUIUXPanelProps> = ({ onSelectItem }
                     className="w-2 h-2 rounded-full shadow-xs"
                     style={{ backgroundColor: item.accentColor }}
                   />
-                  <span className="font-sans text-[9px] uppercase tracking-[0.18em] text-[#173A46]/75 font-semibold">
+                  <span className="font-sans text-[9px] uppercase tracking-[0.18em] text-[#244B57] font-medium font-semibold">
                     {item.title}
                   </span>
                 </div>
-                <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#173A46]/45">
+                <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#244B57] font-medium">
                   UI / UX
                 </span>
               </div>
@@ -190,7 +190,7 @@ export const DesignUIUXPanel: React.FC<DesignUIUXPanelProps> = ({ onSelectItem }
 
               {/* Hover Footer Reveal */}
               <div className="flex items-center justify-between pt-1 border-t border-[#173A46]/10 shrink-0">
-                <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#173A46]/60 truncate max-w-[130px]">
+                <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#244B57] font-medium truncate max-w-[130px]">
                   {item.previewSubtitle}
                 </span>
                 <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#173A46] font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">

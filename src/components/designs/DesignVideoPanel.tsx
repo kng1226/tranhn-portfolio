@@ -44,10 +44,10 @@ export const DesignVideoPanel: React.FC<DesignVideoPanelProps> = ({ onSelectItem
       {/* Left side: Category Heading (~28% of panel) */}
       <div className="relative w-full lg:w-[26vw] shrink-0 z-20 mb-8 lg:mb-0">
         <div className="flex items-center gap-3 mb-2">
-          <span className="font-serif italic text-[16px] text-[#F3E7D0]/60 leading-none">
+          <span className="font-serif italic text-[16px] text-[#F3E7D0] leading-none">
             04
           </span>
-          <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#F3E7D0]/80 font-medium">
+          <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#F3E7D0] font-medium">
             MOTION & FILM
           </span>
         </div>
@@ -58,11 +58,11 @@ export const DesignVideoPanel: React.FC<DesignVideoPanelProps> = ({ onSelectItem
           sound & <span className="italic font-normal">motion.</span>
         </h3>
 
-        <p className="mt-4 max-w-[340px] font-sans text-[13px] lg:text-[14px] leading-[1.65] text-[#F3E7D0]/70">
+        <p className="mt-4 max-w-[340px] font-sans text-[13px] lg:text-[14px] leading-[1.65] text-[#F3E7D0]">
           Moving image projects where narrative rhythm, pacing cuts, kinetic type, and spatial sound design bring ideas to life.
         </p>
 
-        <div className="mt-6 flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.16em] text-[#F3E7D0]/50">
+        <div className="mt-6 flex items-center gap-2 font-sans text-[10px] uppercase tracking-[0.16em] text-[#F3E7D0]">
           <span className="w-1.5 h-1.5 rounded-full bg-[#F3E7D0]/60" />
           <span>CINEMATIC CUTS · KINETIC TYPOGRAPHY · SOUNDSCAPE</span>
         </div>

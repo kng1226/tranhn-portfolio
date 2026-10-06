@@ -43,14 +43,14 @@ export const TopLeftName: React.FC<TopLeftNameProps> = ({ themeMode = 'dark' }) 
       >
         <h1
           className={`font-serif text-[17px] lg:text-[18px] font-medium tracking-[-0.015em] transition-colors duration-500 ${
-            isLight ? 'text-[#173A46]' : 'text-[#F3E7D0]/90'
+            isLight ? 'text-[#173A46]' : 'text-[#F3E7D0]'
           }`}
         >
           NGUYỄN TRÂM ANH
         </h1>
         <p
           className={`mt-1 font-sans text-[8px] lg:text-[9px] uppercase tracking-[0.18em] transition-colors duration-500 ${
-            isLight ? 'text-[#173A46]/65 group-hover:text-[#173A46]' : 'text-[#F3E7D0]/50 group-hover:text-[#F3E7D0]/80'
+            isLight ? 'text-[#244B57] font-medium group-hover:text-[#173A46]' : 'text-[#F3E7D0] group-hover:text-[#F3E7D0]'
           }`}
         >
           BUSINESS · TECHNOLOGY · DESIGN

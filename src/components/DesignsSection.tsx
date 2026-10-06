@@ -86,14 +86,14 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
           <div className="absolute top-[8vh] left-[6vw] lg:left-[7vw] z-30 pointer-events-none transition-opacity duration-500">
             {/* Chapter Marker */}
             <div className="flex items-center gap-3">
-              <span className="font-serif italic text-[16px] text-[#173A46]/45 leading-none">
+              <span className="font-serif italic text-[16px] text-[#244B57] font-medium leading-none">
                 04
               </span>
-              <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#173A46]/60 font-medium">
+              <span className="font-sans text-[10px] uppercase tracking-[0.22em] text-[#244B57] font-medium font-medium">
                 DESIGNS
               </span>
               <span className="w-8 h-px bg-[#173A46]/20" />
-              <span className="font-sans text-[10px] uppercase tracking-[0.16em] text-[#173A46]/42">
+              <span className="font-sans text-[10px] uppercase tracking-[0.16em] text-[#244B57] font-medium">
                 FORM · INTERFACE · IMAGE · MOTION
               </span>
             </div>
@@ -102,10 +102,10 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
           {/* Interaction Instruction Banner */}
           <div className="absolute top-[14vh] left-1/2 -translate-x-1/2 z-30 pointer-events-none">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/45 backdrop-blur-md border border-[#173A46]/12 shadow-xs animate-[pulse_4s_ease-in-out_infinite]">
-              <span className="font-sans text-[11px] lg:text-[12px] uppercase tracking-[0.14em] font-medium text-[#173A46]/65">
+              <span className="font-sans text-[11px] lg:text-[12px] uppercase tracking-[0.14em] font-medium text-[#244B57] font-medium">
                 SCROLL TO MOVE THROUGH THE STUDIO — HOVER OR TAP A PIECE TO EXPLORE
               </span>
-              <span className="text-[12px] text-[#173A46]/70 font-sans inline-block animate-[bounce_2s_infinite]">
+              <span className="text-[12px] text-[#244B57] font-medium font-sans inline-block animate-[bounce_2s_infinite]">
                 →
               </span>
             </div>
@@ -165,7 +165,7 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
                   type="button"
                   className={`font-sans text-[10px] tracking-[0.16em] uppercase transition-all duration-300 relative py-0.5 cursor-pointer ${isActive
                     ? 'text-[#173A46] font-semibold'
-                    : 'text-[#173A46]/45 hover:text-[#173A46]/80'
+                    : 'text-[#244B57] font-medium hover:text-[#244B57] font-medium'
                     }`}
                 >
                   <span>{cat.label}</span>
@@ -186,8 +186,8 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
           {/* Mobile Section Intro */}
           <div className="pt-8">
             <div className="flex items-center gap-2 mb-2">
-              <span className="font-serif italic text-[16px] text-[#173A46]/45">04</span>
-              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#173A46]/60 font-medium">
+              <span className="font-serif italic text-[16px] text-[#244B57] font-medium">04</span>
+              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#244B57] font-medium font-medium">
                 DESIGNS
               </span>
             </div>
@@ -198,19 +198,19 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
               need to be seen.
             </h2>
 
-            <p className="mt-3 font-sans text-[14px] leading-[1.6] text-[#173A46]/70">
+            <p className="mt-3 font-sans text-[14px] leading-[1.6] text-[#244B57] font-medium">
               Across three-dimensional form, digital products, illustration, graphic composition
               and moving image, design is another way I explore ideas.
             </p>
 
-            <div className="mt-4 inline-block font-sans text-[10px] uppercase tracking-[0.16em] text-[#173A46]/50 bg-white/40 px-3 py-1.5 rounded-full border border-[#173A46]/10">
+            <div className="mt-4 inline-block font-sans text-[10px] uppercase tracking-[0.16em] text-[#244B57] font-medium bg-white/40 px-3 py-1.5 rounded-full border border-[#173A46]/10">
               SWIPE THE GALLERIES · TAP TO OPEN ↗
             </div>
           </div>
 
           {/* Mobile 01 3D */}
           <div className="space-y-4">
-            <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#173A46]/50 block">
+            <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#244B57] font-medium block">
               01 — THREE DIMENSIONS
             </span>
             <div className="w-full overflow-x-auto snap-x snap-mandatory flex gap-4 pb-2 overscroll-x-contain touch-pan-x">
@@ -236,7 +236,7 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
                 <div className="flex items-center justify-between">
                   <div>
                     <h4 className="font-serif text-[20px] text-[#173A46]">AVA</h4>
-                    <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#173A46]/60">
+                    <span className="font-sans text-[8px] uppercase tracking-[0.16em] text-[#244B57] font-medium">
                       3D CELESTIAL COMPASS
                     </span>
                   </div>
@@ -250,7 +250,7 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
 
           {/* Mobile 02 UI/UX */}
           <div className="space-y-4">
-            <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#173A46]/50 block">
+            <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#244B57] font-medium block">
               02 — DIGITAL INTERFACES (UI/UX)
             </span>
             <div className="w-full overflow-x-auto snap-x snap-mandatory flex gap-4 pb-2 overscroll-x-contain touch-pan-x">
@@ -280,11 +280,11 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
                   <div className="flex items-center justify-between">
                     <div>
                       <h4 className="font-serif text-[18px] text-[#173A46]">{ui.title}</h4>
-                      <span className="font-sans text-[7.5px] uppercase tracking-[0.14em] text-[#173A46]/55">
+                      <span className="font-sans text-[7.5px] uppercase tracking-[0.14em] text-[#244B57] font-medium">
                         {ui.type}
                       </span>
                     </div>
-                    <span className="text-[10px] text-[#173A46]/70">↗</span>
+                    <span className="text-[10px] text-[#244B57] font-medium">↗</span>
                   </div>
                 </div>
               ))}
@@ -293,7 +293,7 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
 
           {/* Mobile 03 Graphic Design */}
           <div className="space-y-4">
-            <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#173A46]/50 block">
+            <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#244B57] font-medium block">
               03 — GRAPHIC & ILLUSTRATION
             </span>
             <div className="grid grid-cols-2 gap-3">
@@ -332,7 +332,7 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
                     <span className="font-serif text-[15px] text-[#173A46] truncate max-w-[120px]">
                       {item.title}
                     </span>
-                    <span className="font-sans text-[7px] uppercase tracking-[0.14em] text-[#173A46]/60">
+                    <span className="font-sans text-[7px] uppercase tracking-[0.14em] text-[#244B57] font-medium">
                       VIEW ↗
                     </span>
                   </div>
@@ -343,7 +343,7 @@ export const DesignsSection: React.FC<DesignsSectionProps> = ({
 
           {/* Mobile 04 Video Editing */}
           <div className="space-y-4">
-            <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#173A46]/50 block">
+            <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#244B57] font-medium block">
               04 — MOTION & VIDEO
             </span>
             <div className="space-y-4">

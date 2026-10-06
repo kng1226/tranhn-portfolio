@@ -40,7 +40,7 @@ export const FloatingNav: React.FC<FloatingNavProps> = ({
         className={`flex w-full items-center justify-between gap-0 sm:gap-1 rounded-full backdrop-blur-xl px-1 sm:px-2 py-1.5 sm:py-2 max-w-full overflow-x-auto transition-colors duration-500 ${
           isLight
             ? 'border border-[#173A46]/12 bg-[#F6F1E8]/65 text-[#173A46] shadow-[0_8px_30px_rgba(10,35,45,0.12)]'
-            : 'border border-[#F3E7D0]/16 bg-[#F3E7D0]/16 text-[#F3E7D0]/68 shadow-[0_8px_28px_rgba(0,0,0,0.10)]'
+            : 'border border-[#F3E7D0]/16 bg-[#F3E7D0]/16 text-[#F3E7D0] shadow-[0_8px_28px_rgba(0,0,0,0.10)]'
         }`}
       >
         {NAV_ITEMS.map((item) => {
@@ -50,11 +50,11 @@ export const FloatingNav: React.FC<FloatingNavProps> = ({
           if (isLight) {
             itemClass = isActive
               ? 'bg-[#173A46]/10 text-[#173A46] font-semibold'
-              : 'text-[#173A46]/65 hover:text-[#173A46] hover:bg-[#173A46]/5';
+              : 'text-[#244B57] font-medium hover:text-[#173A46] hover:bg-[#173A46]/5';
           } else {
             itemClass = isActive
               ? 'bg-[#F3E7D0]/14 text-[#F3E7D0] font-semibold'
-              : 'text-[#F3E7D0]/70 hover:text-[#F3E7D0] hover:bg-[#F3E7D0]/10';
+              : 'text-[#F3E7D0] hover:text-[#F3E7D0] hover:bg-[#F3E7D0]/10';
           }
 
           return (
