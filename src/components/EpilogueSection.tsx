@@ -146,7 +146,7 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
       id="epilogue-section"
       ref={sectionRef}
       aria-label="Section 05 — Epilogue & Footer"
-      className={`relative w-full ${isMobile ? 'min-h-screen py-16' : 'h-[360vh]'} z-20 select-none`}
+      className={`relative w-full ${isMobile ? 'min-h-screen py-16' : 'h-[360vh]'} z-20`}
     >
       {/* ============================================================ */}
       {/* DESKTOP PINNED VIEWPORT (sticky top-0 h-screen overflow-hidden) */}
@@ -174,7 +174,7 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
               transform: `translate3d(0, ${p1Y}px, 0)`,
               pointerEvents: scrollProgress > 0.38 ? 'none' : 'auto',
             }}
-            className="relative z-30 pt-[17vh] lg:pt-[20vh] pl-[7vw] w-[38vw] max-w-[520px] transition-opacity duration-300"
+            className="relative z-30 pt-[17vh] lg:pt-[18vh] pl-[7vw] w-[min(48vw,640px)] max-w-[640px] transition-opacity duration-300"
           >
             {/* Chapter Marker */}
             <div className="flex items-center gap-3 mb-6" style={{ opacity: headingOpacity }}>
@@ -192,7 +192,7 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
 
             {/* Main Section Heading */}
             <h2 
-              className="font-serif text-[clamp(56px,5.4vw,82px)] leading-[0.93] tracking-[-0.03em] text-[#F3E7D0] font-normal w-full"
+              className="font-serif text-[clamp(48px,5vw,72px)] leading-[0.93] tracking-[-0.03em] text-[#F3E7D0] font-normal w-full"
               style={{ opacity: headingOpacity }}
             >
               Every edge
@@ -214,7 +214,7 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
             </div>
 
             {/* Editorial Contact Block */}
-            <div className="mt-8 flex flex-col items-start gap-6 border-none pt-0" style={{ opacity: contactOpacity }}>
+            <div className="mt-5 flex flex-col items-start gap-4 border-none pt-0" style={{ opacity: contactOpacity }}>
               {/* Identity & Location & Email */}
               <div className="space-y-2">
                 <div>
@@ -244,7 +244,7 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
               </div>
 
               {/* Two Actions */}
-              <div className="flex items-center gap-5 mt-2">
+              <div className="flex items-center gap-5 mt-1">
                 {/* Primary Action Button */}
                 <button
                   onClick={onContactClick || (() => (window.location.href = 'mailto:tranhn.work@gmail.com'))}
@@ -304,7 +304,7 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
               opacity: p3Opacity,
               pointerEvents: scrollProgress >= 0.68 ? 'auto' : 'none',
             }}
-            className="absolute inset-0 z-30 transition-opacity duration-700"
+            className="absolute inset-0 z-30 transition-opacity duration-700 pointer-events-none"
           >
             <div className="absolute top-[46%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center w-full px-6">
               <h4 className="font-serif text-[18px] lg:text-[20px] text-[#F3E7D0]/88 font-normal drop-shadow-sm">
@@ -337,7 +337,7 @@ export const EpilogueSection: React.FC<EpilogueSectionProps> = ({
             }}
             className="absolute bottom-0 left-0 right-0 z-30 border-t border-[#F3E7D0]/10"
           >
-            <div className="grid grid-cols-3 items-end px-[48px] py-[28px] pb-[32px]">
+            <div className="grid grid-cols-3 items-end px-[48px] py-[20px] pb-[24px]">
               {/* LEFT COLUMN */}
               <div className="text-left">
                 <span className="font-serif text-[16px] text-[#F3E7D0]/82 block leading-tight">
