@@ -8,16 +8,8 @@ import React, { useEffect, useRef } from 'react';
 /**
  * BackgroundScene
  *
- * Maps each of the 5 portfolio sections to its own background image folder (1–5),
- * each containing 300 frames. As the user scrolls through a section, the frames
- * for that section play. Sections are separated cleanly with no bleed.
- *
- * Section → Folder mapping:
- *   Journey     (#top)                → /1/  (frames 001–300)
- *   Experience  (#experience-section) → /2/  (frames 001–300)
- *   Projects    (#projects-section)   → /3/  (frames 001–300)
- *   Designs     (#designs-section)    → /4/  (frames 001–300)
- *   About       (#epilogue-section)   → /5/  (frames 001–300)
+ * Maps continuous scroll progress to a sequence of frames.
+ * Uses a different frame sequence for desktop (750 frames) vs mobile (600 frames).
  */
 
 const SECTION_IDS = [
@@ -28,7 +20,6 @@ const SECTION_IDS = [
   'epilogue-section',
 ] as const;
 
-const FRAMES_PER_SECTION = 300;
 const MAX_DEVICE_PIXEL_RATIO = 1.25;
 const MAX_CACHED_FRAMES = 12;
 
@@ -56,7 +47,19 @@ export const BackgroundScene: React.FC = () => {
 
     // ── Canvas size ────────────────────────────────────────────────────────────
 
+    let isMobile = window.innerWidth < 768;
+    let numFrames = isMobile ? 600 : 750;
+    let viewMode = isMobile ? 'mobile' : 'desktop';
+
     const resize = () => {
+      const newIsMobile = window.innerWidth < 768;
+      if (newIsMobile !== isMobile) {
+        isMobile = newIsMobile;
+        numFrames = isMobile ? 600 : 750;
+        viewMode = isMobile ? 'mobile' : 'desktop';
+        if (!cache[viewMode]) cache[viewMode] = new Map();
+      }
+
       const dpr = Math.min(window.devicePixelRatio || 1, MAX_DEVICE_PIXEL_RATIO);
       canvas.width = Math.round(window.innerWidth * dpr);
       canvas.height = Math.round(window.innerHeight * dpr);
@@ -97,22 +100,21 @@ export const BackgroundScene: React.FC = () => {
       if (!raf) raf = requestAnimationFrame(tick);
     }, 300);
 
-    // ── Image cache: cache[folder][frame] ──────────────────────────────────────
+    // ── Image cache: cache[mode][frame] ────────────────────────────────────────
 
-    type Cache = Record<number, Map<number, HTMLImageElement>>;
-    const cache: Cache = {};
-    for (let f = 1; f <= 5; f++) cache[f] = new Map();
+    type Cache = Record<string, Map<number, HTMLImageElement>>;
+    const cache: Cache = { desktop: new Map(), mobile: new Map() };
     const pending = new Map<string, HTMLImageElement>();
     const failed = new Set<string>();
 
-    const getPath = (folder: number, frame: number) =>
-      `/${folder}/ezgif-frame-${frame.toString().padStart(3, '0')}.jpg`;
+    const getPath = (mode: string, frame: number) =>
+      `/frames/${mode}/frame_${frame.toString().padStart(5, '0')}.webp`;
 
     // ── Render ─────────────────────────────────────────────────────────────────
 
-    let currentFolder = 1;
+    let currentMode = viewMode;
     let currentFrame = 1;
-    let requestedFolder = 1;
+    let requestedMode = viewMode;
     let requestedFrame = 1;
     let lastDrawn = '';
 
@@ -129,18 +131,18 @@ export const BackgroundScene: React.FC = () => {
       }
       ctx.clearRect(0, 0, cw, ch);
       ctx.drawImage(img, x, y, w, h);
-      lastDrawn = `${currentFolder}:${currentFrame}`;
+      lastDrawn = `${currentMode}:${currentFrame}`;
     };
 
-    const renderFrame = (folder: number, frame: number) => {
-      requestedFolder = folder;
+    const renderFrame = (mode: string, frame: number) => {
+      requestedMode = mode;
       requestedFrame = frame;
-      currentFolder = folder;
+      currentMode = mode;
       currentFrame = frame;
-      const key = `${folder}:${frame}`;
-      const img = cache[folder]?.get(frame);
+      const key = `${mode}:${frame}`;
+      const img = cache[mode]?.get(frame);
       if (img?.complete && img.naturalWidth > 0) {
-        currentFolder = folder;
+        currentMode = mode;
         currentFrame = frame;
         if (lastDrawn !== key) drawImage(img);
       } else if (!img && !pending.has(key) && !failed.has(key)) {
@@ -149,30 +151,31 @@ export const BackgroundScene: React.FC = () => {
         pending.set(key, newImg);
         newImg.onload = () => {
           pending.delete(key);
-          cache[folder].set(frame, newImg);
-          const nearby = [...cache[folder].entries()].sort((a, b) => Math.abs(a[0] - currentFrame) - Math.abs(b[0] - currentFrame));
+          cache[mode].set(frame, newImg);
+          const nearby = [...cache[mode].entries()].sort((a, b) => Math.abs(a[0] - currentFrame) - Math.abs(b[0] - currentFrame));
           while (nearby.length > MAX_CACHED_FRAMES) {
             const [oldFrame] = nearby.pop()!;
-            if (oldFrame !== currentFrame && oldFrame !== requestedFrame) cache[folder].delete(oldFrame);
+            if (oldFrame !== currentFrame && oldFrame !== requestedFrame) cache[mode].delete(oldFrame);
           }
           // Only paint if this is still the active frame
-          if (currentFolder === folder && currentFrame === frame) {
+          if (currentMode === mode && currentFrame === frame) {
             drawImage(newImg);
           }
         };
         newImg.onerror = () => { pending.delete(key); failed.add(key); };
-        newImg.src = getPath(folder, frame);
+        newImg.src = getPath(mode, frame);
       }
     };
 
-    const renderCurrent = () => renderFrame(currentFolder, currentFrame);
+    const renderCurrent = () => renderFrame(currentMode, currentFrame);
 
-    // ── Smart preloader: current section first, then adjacent, then rest ────────
+    // ── Smart preloader: load adjacent frames dynamically ──────────────────────
 
-    const preloadNearby = (folder: number, frame: number) => {
+    const preloadNearby = (mode: string, frame: number) => {
       for (const [key, img] of pending) {
-        const [pendingFolder, pendingFrame] = key.split(':').map(Number);
-        if (pendingFolder !== folder || Math.abs(pendingFrame - frame) > 8) {
+        const [pendingMode, pendingFrameStr] = key.split(':');
+        const pendingFrame = Number(pendingFrameStr);
+        if (pendingMode !== mode || Math.abs(pendingFrame - frame) > 8) {
           img.onload = null;
           img.onerror = null;
           img.removeAttribute('src');
@@ -181,77 +184,64 @@ export const BackgroundScene: React.FC = () => {
       }
       for (let offset = 1; offset <= 2; offset++) {
         for (const candidate of [frame - offset, frame + offset]) {
-          if (candidate < 1 || candidate > FRAMES_PER_SECTION) continue;
-          const key = `${folder}:${candidate}`;
-          if (cache[folder].has(candidate) || pending.has(key) || failed.has(key)) continue;
+          if (candidate < 1 || candidate > numFrames) continue;
+          const key = `${mode}:${candidate}`;
+          if (cache[mode].has(candidate) || pending.has(key) || failed.has(key)) continue;
           const img = new Image();
           img.decoding = 'async';
           pending.set(key, img);
           img.onload = () => {
             pending.delete(key);
-            cache[folder].set(candidate, img);
-            const loaded = [...cache[folder].keys()];
+            cache[mode].set(candidate, img);
+            const loaded = [...cache[mode].keys()];
             while (loaded.length > MAX_CACHED_FRAMES) {
               const old = loaded.shift()!;
-              if (old !== currentFrame && old !== requestedFrame) cache[folder].delete(old);
+              if (old !== currentFrame && old !== requestedFrame) cache[mode].delete(old);
             }
           };
           img.onerror = () => { pending.delete(key); failed.add(key); };
-          img.src = getPath(folder, candidate);
+          img.src = getPath(mode, candidate);
         }
       }
     };
 
-    // Boot: show frame 1/1 immediately then begin background preloading
-    renderFrame(1, 1);
+    // Boot: show frame 1 immediately
+    renderFrame(viewMode, 1);
 
     // ── Scroll mapping ─────────────────────────────────────────────────────────
 
-    const frameForScroll = (scrollY: number): { folder: number; frame: number } => {
-      if (!boundaries.length) return { folder: 1, frame: 1 };
-      if (window.innerWidth < 768) {
-        const index = boundaries.findIndex(({ top, height }, i) => scrollY < top + height || i === boundaries.length - 1);
-        return { folder: Math.max(1, index + 1), frame: 1 };
+    const frameForScroll = (scrollY: number): { mode: string; frame: number } => {
+      if (!boundaries.length) return { mode: viewMode, frame: 1 };
+      
+      const lastBoundary = boundaries[boundaries.length - 1];
+      const docHeight = lastBoundary.top + lastBoundary.height;
+      const maxScroll = Math.max(0, docHeight - window.innerHeight);
+      
+      let progress = 0;
+      if (maxScroll > 0) {
+        progress = Math.max(0, Math.min(1, scrollY / maxScroll));
       }
-
-      for (let i = 0; i < boundaries.length; i++) {
-        const { top, height } = boundaries[i];
-        const bottom = top + height;
-
-        if (scrollY < bottom || i === boundaries.length - 1) {
-          const windowHeight = window.innerHeight;
-          const startScroll = Math.max(0, top - windowHeight);
-          const endScroll = bottom;
-          const scrollable = endScroll - startScroll;
-
-          let progress = 0;
-          if (scrollable > 0) {
-            progress = Math.max(0, Math.min(1, (scrollY - startScroll) / scrollable));
-          }
-          const frame = Math.max(1, Math.min(FRAMES_PER_SECTION, Math.floor(progress * FRAMES_PER_SECTION) + 1));
-          return { folder: i + 1, frame };
-        }
-      }
-
-      return { folder: 5, frame: FRAMES_PER_SECTION };
+      
+      const frame = Math.max(1, Math.min(numFrames, Math.floor(progress * numFrames) + 1));
+      return { mode: viewMode, frame };
     };
 
     // ── Direct RAF loop — reads scrollY directly, no easing delay ─────────────
 
-    let lastRenderedFolder = 0;
+    let lastRenderedMode = '';
     let lastRenderedFrame = 0;
     let raf = 0;
     let lastScrollY = window.scrollY;
 
     const tick = () => {
       raf = 0;
-      const { folder, frame } = frameForScroll(lastScrollY);
+      const { mode, frame } = frameForScroll(lastScrollY);
 
       // Only redraw when the frame actually changes — avoids redundant canvas work
-      if (folder !== lastRenderedFolder || frame !== lastRenderedFrame) {
-        renderFrame(folder, frame);
-        preloadNearby(folder, frame);
-        lastRenderedFolder = folder;
+      if (mode !== lastRenderedMode || frame !== lastRenderedFrame) {
+        renderFrame(mode, frame);
+        preloadNearby(mode, frame);
+        lastRenderedMode = mode;
         lastRenderedFrame = frame;
       }
     };
@@ -282,13 +272,9 @@ export const BackgroundScene: React.FC = () => {
       className="fixed inset-0 w-full h-full -z-10 overflow-hidden pointer-events-none select-none bg-black"
       aria-hidden="true"
     >
-      {/* 
-        Slightly scale and shift the canvas to push the ezgif watermark 
-        at the bottom right completely out of the visible viewport. 
-      */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full block scale-[1.06] origin-center translate-x-[1.5%] translate-y-[1.5%]"
+        className="absolute inset-0 w-full h-full block"
       />
     </div>
   );
